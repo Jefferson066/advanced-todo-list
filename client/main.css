@@ -23,12 +23,11 @@ body {
 }
 
 button {
-  font-weight: bold;
-  font-size: 1em;
-  border: none;
+  width: 100%;
+  background: darkblue;
   color: white;
-  box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
-  padding: 5px;
+  border: none;
+  padding: 10px 30px;
   cursor: pointer;
 }
 
@@ -76,10 +75,11 @@ button:focus {
 .login-form > div  > input {
   flex-grow: 1;
   box-sizing: border-box;
+  display: block;
   padding: 10px 6px;
   background: transparent;
   border: 1px solid #aaa;
-  width: 100%;
+  width: 300px;
   font-size: 1em;
   margin-right: 16px;
   margin-top: 4px;
@@ -89,12 +89,21 @@ button:focus {
   outline: 0;
 }
 
-.login-form > div > button {
-  background-color: #62807e;
-}
-
 
 .link{
   cursor: pointer;
 
+}
+
+.msg-error{
+  color: red;
+}
+.logout{
+  display: flex;
+
+  align-self: flex-end;
+
+  margin: 8px 16px 0;
+  font-weight: bold;
+  cursor: pointer;
 }
