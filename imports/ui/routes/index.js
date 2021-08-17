@@ -1,9 +1,9 @@
-import { React } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
-import Login from '../pages/Login/index';
-import Register from '../pages/Register/index';
-import Page404 from '../pages/Page404/index';
+import { Register } from '../pages/Register/index';
+import { Login } from '../pages/Login/index';
+import { Page404 } from '../pages/Page404/index';
+import { Logged } from '../pages/Logged';
 
 export default function Routes() {
   return (
@@ -11,8 +11,11 @@ export default function Routes() {
       <Route exact path="/">
         <Login />
       </Route>
-      <Route exact path="/new">
+      <Route exact path="/register">
         <Register />
+      </Route>
+      <Route exact path="/logged">
+        <Logged />
       </Route>
       <Route exact path="*">
         <Page404 />
