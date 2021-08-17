@@ -98,6 +98,10 @@ button:focus {
 .msg-error{
   color: red;
 }
+
+.msg-success{
+  color: green;
+}
 .logout{
   display: flex;
 

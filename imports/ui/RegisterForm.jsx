@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
+//import { Accounts } from 'meteor/accounts-base';
 import { Link } from 'react-router-dom';
 
 export const RegisterForm = () => {
@@ -7,21 +8,21 @@ export const RegisterForm = () => {
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSuccess('');
     const validate = validatePassword(password, repassword);
+
     if (!validate) {
-      console.log(error);
       return;
     }
+
     try {
-      Accounts.createUser({
-        username: username,
-        password: password,
-      });
+      Meteor.call('user.create', username, password);
       setError('');
-      console.log('conta criada!');
+      setSuccess('Cadastro realizado!');
     } catch (error) {
       console.log(error);
     }
@@ -41,6 +42,7 @@ export const RegisterForm = () => {
       <div className="main">
         <form onSubmit={handleSubmit} className="login-form">
           <div className="msg-error">{error && <h2>{error}</h2>}</div>
+          <div className="msg-success">{success && <h2>{success}</h2>}</div>
           <h2>Cadastrar-se!</h2>
           <div>
             <label htmlFor="username">Username</label>

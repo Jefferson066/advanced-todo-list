@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import '/imports/api/methods/userMethods';
 //import { Accounts } from 'meteor/accounts-base';
 //import { TasksCollection } from '../imports/api/database/TasksCollection';
 
