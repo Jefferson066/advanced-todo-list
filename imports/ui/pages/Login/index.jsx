@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 
-export const LoginForm = () => {
+export const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const error = function (error) {
       if (error !== undefined) {
-        setError('Error in processing login. ' + error.reason + '.');
+        setError((error) => 'Error in processing login. ' + error.reason + '.');
       }
     };
+
     Meteor.loginWithPassword(username, password, error);
   };
+
   return (
     <form onSubmit={handleSubmit} className="login-form">
       <div className="msg-error">{error && <h2>{error}</h2>}</div>

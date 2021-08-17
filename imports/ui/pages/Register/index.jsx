@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 //import { Accounts } from 'meteor/accounts-base';
 import { Link } from 'react-router-dom';
 
-export const RegisterForm = () => {
+export const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
@@ -12,7 +12,8 @@ export const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSuccess('');
+    // eslint-disable-next-line no-unused-vars
+    setSuccess((success) => '');
     const validate = validatePassword(password, repassword);
 
     if (!validate) {
@@ -21,8 +22,10 @@ export const RegisterForm = () => {
 
     try {
       Meteor.call('user.create', username, password);
-      setError('');
-      setSuccess('Cadastro realizado!');
+      // eslint-disable-next-line no-unused-vars
+      setError((error) => '');
+      // eslint-disable-next-line no-unused-vars
+      setSuccess((success) => 'Cadastro realizado!');
     } catch (error) {
       console.log(error);
     }
@@ -32,7 +35,8 @@ export const RegisterForm = () => {
     if (password === repassword) {
       return true;
     } else {
-      setError('Os campos Password não se correspondem!');
+      // eslint-disable-next-line no-unused-vars
+      setError((error) => 'Os campos Password não se correspondem!');
       return false;
     }
   };

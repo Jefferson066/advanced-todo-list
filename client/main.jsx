@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import { App } from '/imports/ui/App';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { RegisterForm } from '../imports/ui/RegisterForm';
+import { Register } from '../imports/ui/pages/Register/index';
 
 Meteor.startup(() => {
   render(
@@ -13,7 +13,7 @@ Meteor.startup(() => {
           <App />
         </Route>
         <Route exact path="/register">
-          <RegisterForm />
+          <Register />
         </Route>
       </Switch>
     </BrowserRouter>,

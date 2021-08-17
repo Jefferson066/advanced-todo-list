@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { LoginForm } from './LoginForm.jsx';
+import { Login } from './pages/Login/index';
 
 export const App = () => {
   const user = useTracker(() => Meteor.user());
@@ -17,7 +17,7 @@ export const App = () => {
             </div>
           </Fragment>
         ) : (
-          <LoginForm />
+          <Login />
         )}
       </div>
     </div>
