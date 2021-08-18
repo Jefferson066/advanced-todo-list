@@ -1,6 +1,4 @@
 import React from 'react';
-//import Routes from './routes';
-//import { BrowserRouter } from 'react-router-dom';
 import { Login } from './pages/Login/index';
 
 export const App = () => {

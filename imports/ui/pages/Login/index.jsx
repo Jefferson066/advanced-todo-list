@@ -12,7 +12,8 @@ export const Login = () => {
 
     const error = function (error) {
       if (error !== undefined) {
-        setError((error) => 'Error in processing login. ' + error.reason + '.');
+        // eslint-disable-next-line no-unused-vars
+        setError((error) => 'Error in processing login. ');
       }
     };
 
