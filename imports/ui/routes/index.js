@@ -6,11 +6,11 @@ import { Page404 } from '../pages/Page404/index';
 import { Logged } from '../pages/Logged';
 import { App } from '../App';
 
-export default function Routes() {
+export default function Routes({ history }) {
   return (
     <Switch>
       <Route exact path="/">
-        <App />
+        <App history={history} />
       </Route>
       <Route exact path="/register">
         <Register />
@@ -24,9 +24,3 @@ export default function Routes() {
     </Switch>
   );
 }
-
-/*
-<Route exact path="/logged">
-        <Logged />
-      </Route>
-*/

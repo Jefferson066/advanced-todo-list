@@ -1,5 +1,5 @@
 import React from 'react';
-import { P404 } from '../../components/Page404';
+import { P404 } from '../../components/404/index';
 
 export const Page404 = () => {
   return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Login } from './pages/Login/index';
 
-export const App = () => {
+export const App = ({ history }) => {
   return (
     <div className="app">
       <div className="main">
-        <Login />
+        <Login history={history} />
       </div>
     </div>
   );
