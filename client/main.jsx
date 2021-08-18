@@ -1,8 +1,14 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
-import { App } from '/imports/ui/App';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from '../imports/ui/routes';
 
 Meteor.startup(() => {
-  render(<App />, document.getElementById('react-target'));
+  render(
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>,
+    document.getElementById('react-target'),
+  );
 });

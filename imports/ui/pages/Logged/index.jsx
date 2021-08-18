@@ -9,7 +9,7 @@ export const Logged = () => {
     <div className="app">
       <div className="main">
         <h1>{user.username}</h1>
-        <div className="logout">
+        <div className="logout!">
           <button onClick={logout}>Logout</button>
         </div>
       </div>

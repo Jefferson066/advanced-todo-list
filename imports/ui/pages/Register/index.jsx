@@ -41,13 +41,17 @@ export const Register = () => {
   };
 
   return (
-    <FormRegister
-      submit={handleSubmit}
-      error={error}
-      success={success}
-      setUsername={setUsername}
-      setPassword={setPassword}
-      setRepassword={setRepassword}
-    />
+    <div className="app">
+      <div className="main">
+        <FormRegister
+          submit={handleSubmit}
+          error={error}
+          success={success}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          setRepassword={setRepassword}
+        />
+      </div>
+    </div>
   );
 };
