@@ -21,5 +21,12 @@ export const Login = ({ history }) => {
       history.push(URL_PATHS.HOME);
     });
   };
-  return <FormLogin submit={handleSubmit} error={error} setUsername={setUsername} setPassword={setPassword} />;
+  return (
+    <FormLogin
+      submit={handleSubmit}
+      error={error}
+      setUsername={setUsername}
+      setPassword={setPassword}
+    />
+  );
 };

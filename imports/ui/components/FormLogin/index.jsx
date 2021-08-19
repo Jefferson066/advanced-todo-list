@@ -28,7 +28,9 @@ export const FormLogin = ({ submit, error, setUsername, setPassword }) => (
       />
     </div>
     <div>
-      <button type="submit">Log In</button>
+      <button className="btn-form" type="submit">
+        Log In
+      </button>
     </div>
     <Link className="link" to="/register">
       Cadastrar

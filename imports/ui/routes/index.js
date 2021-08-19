@@ -3,8 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import MyRoute from './MyRoute';
 import { Register } from '../pages/Register/index';
 import { Page404 } from '../pages/Page404/index';
-import { Logged } from '../pages/Logged';
+import { Welcome } from '../pages/Welcome/index';
 import { App } from '../App';
+import { TodoList } from '../pages/TodoList';
 
 export default function Routes({ history }) {
   return (
@@ -16,7 +17,10 @@ export default function Routes({ history }) {
         <Register />
       </Route>
       <MyRoute exact path={'/authenticated'}>
-        <Logged />
+        <Welcome history={history} />
+      </MyRoute>
+      <MyRoute exact path={'/authenticated/todolist'}>
+        <TodoList />
       </MyRoute>
       <Route exact path="*">
         <Page404 />

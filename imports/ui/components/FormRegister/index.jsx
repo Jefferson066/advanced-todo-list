@@ -2,7 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-export const FormRegister = ({ submit, error, success, setUsername, setPassword, setRepassword }) => (
+export const FormRegister = ({
+  submit,
+  error,
+  success,
+  setUsername,
+  setPassword,
+  setRepassword,
+}) => (
   <form onSubmit={submit} className="login-form">
     <div className="msg-error">{error && <h2>{error}</h2>}</div>
     <div className="msg-success">{success && <h2>{success}</h2>}</div>
@@ -40,7 +47,9 @@ export const FormRegister = ({ submit, error, success, setUsername, setPassword,
       />
     </div>
     <div>
-      <button type="submit">Cadastrar</button>
+      <button className="btn-form" type="submit">
+        Cadastrar
+      </button>
     </div>
     <Link className="link" to="/">
       Início
