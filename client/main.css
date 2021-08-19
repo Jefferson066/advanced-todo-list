@@ -67,6 +67,9 @@ button:focus {
   height: 0;
   background: inherit;
 }
+.task-form {
+  margin-top: 1rem;
+}
 
 .login-form {
   display: flex;
