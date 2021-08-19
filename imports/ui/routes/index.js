@@ -6,6 +6,7 @@ import { Page404 } from '../pages/Page404/index';
 import { Welcome } from '../pages/Welcome/index';
 import { App } from '../App';
 import { TodoList } from '../pages/TodoList';
+import { NewTask } from '../pages/NewTask';
 
 export default function Routes({ history }) {
   return (
@@ -20,7 +21,10 @@ export default function Routes({ history }) {
         <Welcome history={history} />
       </MyRoute>
       <MyRoute exact path={'/authenticated/todolist'}>
-        <TodoList />
+        <TodoList history={history} />
+      </MyRoute>
+      <MyRoute exact path={'/authenticated/todolist/new'}>
+        <NewTask history={history} />
       </MyRoute>
       <Route exact path="*">
         <Page404 />

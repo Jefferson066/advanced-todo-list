@@ -11,8 +11,16 @@ export const FormRegister = ({
   setRepassword,
 }) => (
   <form onSubmit={submit} className="login-form">
-    <div className="msg-error">{error && <h2>{error}</h2>}</div>
-    <div className="msg-success">{success && <h2>{success}</h2>}</div>
+    {error && (
+      <div className="msg-error">
+        <h2>{error}</h2>
+      </div>
+    )}
+    {success && (
+      <div className="msg-success">
+        <h2>{success}</h2>
+      </div>
+    )}
     <h2>Cadastrar-se!</h2>
     <div>
       <label htmlFor="username">Username</label>

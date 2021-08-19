@@ -14,14 +14,18 @@ Meteor.methods({
       });
     }
   },
-  'tasks.insert'(text, username) {
+  'tasks.insert'(name, text, data, username) {
+    check(name, String);
     check(text, String);
+    check(data, String);
     check(username, String);
     if (!this.userId) {
       throw new Meteor.Error('Not authorized!');
     }
     TasksCollection.insert({
+      name,
       text,
+      data,
       createdAt: new Date(),
       userId: this.userId,
       username: username,

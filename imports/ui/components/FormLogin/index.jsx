@@ -3,7 +3,11 @@ import React from 'react';
 // eslint-disable-next-line react/prop-types
 export const FormLogin = ({ submit, error, setUsername, setPassword }) => (
   <form onSubmit={submit} className="login-form">
-    <div className="msg-error">{error && <h2>{error}</h2>}</div>
+    {error && (
+      <div className="msg-error">
+        <h2>{error}</h2>
+      </div>
+    )}
     <h2>Bem vindo ao todo list!</h2>
     <div>
       <label htmlFor="username">Username</label>

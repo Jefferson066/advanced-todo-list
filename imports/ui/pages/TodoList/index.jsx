@@ -3,13 +3,20 @@ import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Task } from '../../components/Tasks';
-import { TaskForm } from '../../components/TaskForm';
 
+const URL_PATHS = {
+  NEWTASK: '/authenticated/todolist/new',
+};
 // eslint-disable-next-line no-unused-vars
 export const TodoList = ({ history }) => {
   const user = useTracker(() => Meteor.user());
   const tasks = useTracker(() => TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch());
   const logout = () => Meteor.logout();
+
+  const handleAddTaskClick = (e) => {
+    e.preventDefault();
+    history.push(URL_PATHS.NEWTASK);
+  };
 
   return (
     <div className="app">
@@ -20,7 +27,11 @@ export const TodoList = ({ history }) => {
       </div>
       <div className="main">
         <h2>Todo list {user.username}!</h2>
-        <TaskForm username={user.username} />
+        <div>
+          <button onClick={handleAddTaskClick} className="btn">
+            Adicionar Tarefa!
+          </button>
+        </div>
         <ul>
           {tasks.map((task) => (
             <Task key={task._id} task={task} />
@@ -30,3 +41,10 @@ export const TodoList = ({ history }) => {
     </div>
   );
 };
+
+/*
+ <div>
+        <button className="btn">Adicionar Tarefa</button>
+
+        </div>
+*/

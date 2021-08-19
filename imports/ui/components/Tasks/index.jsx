@@ -5,7 +5,7 @@ export const Task = ({ task }) => {
   //Meteor.call('user.find', userId);
   return (
     <li>
-      {task.text}- criado por - {task.username}
+      Nome-{task.name}, Descrição-{task.text}, data-{task.data}, nome-{task.username}
     </li>
   );
 };

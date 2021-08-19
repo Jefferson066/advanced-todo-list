@@ -69,6 +69,23 @@ button:focus {
 }
 .task-form {
   margin-top: 1rem;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.task-form > div  > input {
+  flex-grow: 1;
+  box-sizing: border-box;
+  display: block;
+  padding: 10px 6px;
+  background: transparent;
+  border: 1px solid #aaa;
+  width: 300px;
+  font-size: 1em;
+  margin-right: 16px;
+  margin-top: 4px;
 }
 
 .login-form {
