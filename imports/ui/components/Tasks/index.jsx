@@ -1,9 +1,11 @@
 import React from 'react';
+//import { Meteor } from 'meteor/meteor';
 
-export const Task = ({ task, userId }) => {
+export const Task = ({ task }) => {
+  //Meteor.call('user.find', userId);
   return (
     <li>
-      {task.text}- criado por {userId}
+      {task.text}- criado por - {task.username}
     </li>
   );
 };

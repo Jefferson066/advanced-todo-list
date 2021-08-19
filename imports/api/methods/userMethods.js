@@ -14,8 +14,9 @@ Meteor.methods({
       });
     }
   },
-  'tasks.insert'(text) {
+  'tasks.insert'(text, username) {
     check(text, String);
+    check(username, String);
     if (!this.userId) {
       throw new Meteor.Error('Not authorized!');
     }
@@ -23,6 +24,7 @@ Meteor.methods({
       text,
       createdAt: new Date(),
       userId: this.userId,
+      username: username,
     });
   },
 });

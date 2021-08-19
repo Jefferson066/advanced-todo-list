@@ -20,10 +20,10 @@ export const TodoList = ({ history }) => {
       </div>
       <div className="main">
         <h2>Todo list {user.username}!</h2>
-        <TaskForm />
+        <TaskForm username={user.username} />
         <ul>
           {tasks.map((task) => (
-            <Task key={task._id} task={task} userId={task.userId} />
+            <Task key={task._id} task={task} />
           ))}
         </ul>
       </div>

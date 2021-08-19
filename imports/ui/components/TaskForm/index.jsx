@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-export const TaskForm = () => {
+export const TaskForm = ({ username }) => {
   // eslint-disable-next-line no-unused-vars
   const [text, setText] = useState('');
 
@@ -10,7 +10,7 @@ export const TaskForm = () => {
 
     if (!text) return;
 
-    Meteor.call('tasks.insert', text);
+    Meteor.call('tasks.insert', text, username);
 
     setText('');
   };
