@@ -2,16 +2,19 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useTracker } from 'meteor/react-meteor-data';
-//import { Task } from '../../components/Tasks';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
 };
 // eslint-disable-next-line no-unused-vars
 export const TodoList = ({ history }) => {
+  // eslint-disable-next-line no-unused-vars
   const user = useTracker(() => Meteor.user());
   const tasks = useTracker(() => TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch());
   const logout = () => Meteor.logout();
@@ -24,36 +27,32 @@ export const TodoList = ({ history }) => {
   return (
     <div className="app">
       <div className="logout">
-        <button className="btn" onClick={logout}>
+        <Button variant="contained" color="primary" onClick={logout}>
           Logout
-        </button>
+        </Button>
       </div>
       <div className="main">
-        <h2>Todo list {user.username}!</h2>
-        <div>
-          <button onClick={handleAddTaskClick} className="btn">
-            Adicionar Tarefa!
-          </button>
-        </div>
-        <List>
-          {tasks.map((task) => (
-            <ListItem button key={task._id}>
-              <ListItemIcon>
-                <AssignmentIcon />
-              </ListItemIcon>
-              <ListItemText primary={task.name} secondary={task.username} />
-            </ListItem>
-          ))}
-        </List>
+        <Typography variant="h4" align="center">
+          Todo list!
+        </Typography>
+        <Container maxWidth="sm">
+          <div>
+            <Button variant="contained" color="primary" onClick={handleAddTaskClick}>
+              Adicionar Tarefa!
+            </Button>
+          </div>
+          <List>
+            {tasks.map((task) => (
+              <ListItem button key={task._id}>
+                <ListItemIcon>
+                  <AssignmentIcon />
+                </ListItemIcon>
+                <ListItemText primary={task.name} secondary={task.username} />
+              </ListItem>
+            ))}
+          </List>
+        </Container>
       </div>
     </div>
   );
 };
-//<ListItem key={task._id} task={task} />
-// <ListItem key={task._id} task={task} />
-
-/*
-{tasks.map((task) => (
-            <ListItem key={task._id} task={task} />
-          ))}
-*/
