@@ -1,32 +1,19 @@
-import React, { useState } from 'react';
-import { Meteor } from 'meteor/meteor';
+import React from 'react';
 
-export const TaskForm = ({ username }) => {
-  const [name, setName] = useState('');
-  const [text, setText] = useState('');
-  const [data, setData] = useState('');
-  const [msg, setMsg] = useState('');
+// eslint-disable-next-line no-unused-vars
+import { Container, Button, Typography } from '@material-ui/core';
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!text && !name && !data) {
-      setMsg('');
-      return;
-    }
-
-    Meteor.call('tasks.insert', name, text, data, username);
-    setMsg('Tarefa adicionada!');
-    setText('');
-    setName('');
-    setData('');
-  };
-
+export const TaskForm = ({ handleSubmit, msg, name, text, data, setName, setText, setData }) => {
   return (
     <form className="task-form" onSubmit={handleSubmit}>
+      <Typography variant="h4" align="center">
+        Adicionar Tarefa
+      </Typography>
       {msg && (
         <div className="msg-success">
-          <h2>{msg} </h2>
+          <Typography variant="h5" align="center">
+            {msg}
+          </Typography>
         </div>
       )}
       <div>
@@ -54,9 +41,9 @@ export const TaskForm = ({ username }) => {
         />
       </div>
       <div>
-        <button className="btn" type="submit">
-          Adicionar Tarefa!
-        </button>
+        <Button variant="contained" color="primary" type="submit">
+          Adicionar
+        </Button>
       </div>
     </form>
   );
