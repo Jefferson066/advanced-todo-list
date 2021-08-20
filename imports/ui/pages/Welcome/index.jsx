@@ -2,13 +2,15 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 
+import { BtnLogout } from '../../components/BtnLogout';
+import { Button, Typography } from '@material-ui/core';
+
 const URL_PATHS = {
   TASKS: '/authenticated/todolist',
 };
 
 export const Welcome = ({ history }) => {
   const user = useTracker(() => Meteor.user());
-  const logout = () => Meteor.logout();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -18,16 +20,16 @@ export const Welcome = ({ history }) => {
   return (
     <div className="app">
       <div className="logout">
-        <button className="btn" onClick={logout}>
-          Logout
-        </button>
+        <BtnLogout />
       </div>
       <div className="main">
-        <h2>Bem vindo {user.username}!</h2>
+        <Typography variant="h4" align="center">
+          Bem vindo {user.username}!
+        </Typography>
         <div>
-          <button className="btn" onClick={handleClick}>
+          <Button variant="contained" color="primary" onClick={handleClick}>
             Visualizar Tarefas
-          </button>
+          </Button>
         </div>
       </div>
     </div>

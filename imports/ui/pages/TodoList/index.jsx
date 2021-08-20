@@ -2,22 +2,21 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useTracker } from 'meteor/react-meteor-data';
-import { List, ListItem, ListItemText } from '@material-ui/core';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+
+import { BtnLogout } from '../../components/BtnLogout';
+
+import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
+import { Container, Button, Typography } from '@material-ui/core';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
 };
-// eslint-disable-next-line no-unused-vars
+
 export const TodoList = ({ history }) => {
   // eslint-disable-next-line no-unused-vars
   const user = useTracker(() => Meteor.user());
   const tasks = useTracker(() => TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch());
-  const logout = () => Meteor.logout();
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
@@ -27,13 +26,11 @@ export const TodoList = ({ history }) => {
   return (
     <div className="app">
       <div className="logout">
-        <Button variant="contained" color="primary" onClick={logout}>
-          Logout
-        </Button>
+        <BtnLogout />
       </div>
       <div className="main">
         <Typography variant="h4" align="center">
-          Todo list!
+          Todo list
         </Typography>
         <Container maxWidth="sm">
           <div>
