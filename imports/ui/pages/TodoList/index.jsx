@@ -2,7 +2,10 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Task } from '../../components/Tasks';
+//import { Task } from '../../components/Tasks';
+import { List, ListItem, ListItemText } from '@material-ui/core';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
@@ -32,19 +35,25 @@ export const TodoList = ({ history }) => {
             Adicionar Tarefa!
           </button>
         </div>
-        <ul>
+        <List>
           {tasks.map((task) => (
-            <Task key={task._id} task={task} />
+            <ListItem button key={task._id}>
+              <ListItemIcon>
+                <AssignmentIcon />
+              </ListItemIcon>
+              <ListItemText primary={task.name} secondary={task.username} />
+            </ListItem>
           ))}
-        </ul>
+        </List>
       </div>
     </div>
   );
 };
+//<ListItem key={task._id} task={task} />
+// <ListItem key={task._id} task={task} />
 
 /*
- <div>
-        <button className="btn">Adicionar Tarefa</button>
-
-        </div>
+{tasks.map((task) => (
+            <ListItem key={task._id} task={task} />
+          ))}
 */

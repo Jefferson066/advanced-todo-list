@@ -56,7 +56,7 @@ button:focus {
   flex-direction: column;
   flex-grow: 1;
   overflow: auto;
-  background: white;
+  background: #F5F5DC;
   justify-content: center;
   align-items: center;
   height: 100%;
