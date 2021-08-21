@@ -1,60 +1,32 @@
 import React from 'react';
-import { Container, Button, Typography } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+import { Container } from '@material-ui/core';
+import { InputName } from '../InputName';
+import { InputText } from '../InputText';
+import { InputData } from '../InputData';
+import { BtnSubmit } from '../BtnSubmit';
+import { MyTypography } from '../MyTypography';
 
 export const TaskForm = ({ handleSubmit, msg, name, text, setName, setText, setData }) => {
   return (
     <Container maxWidth="sm">
       <form className="task-form" onSubmit={handleSubmit}>
-        <Typography variant="h4" align="center">
-          Adicionar Tarefa
-        </Typography>
+        <MyTypography variant={'h4'} textValue={'Adicionar Tarefa'} />
         {msg && (
           <div className="msg-success">
-            <Typography variant="h5" align="center">
-              {msg}
-            </Typography>
+            <MyTypography variant={'h5'} textValue={msg} />
           </div>
         )}
         <div className="input">
-          <TextField
-            required
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            id="outlined-basic"
-            label="Nome"
-            variant="outlined"
-          />
+          <InputName name={name} setName={setName} />
         </div>
         <div className="input">
-          <TextField
-            required
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            id="outlined-basic"
-            label="Descrição"
-            variant="outlined"
-          />
+          <InputText text={text} setText={setText} />
         </div>
         <div className="input">
-          <TextField
-            required
-            id="datetime-local"
-            label="Data"
-            variant="outlined"
-            type="datetime-local"
-            onChange={(e) => setData(e.target.value)}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+          <InputData setData={setData} />
         </div>
         <div className="btn">
-          <Button variant="contained" color="primary" type="submit">
-            Adicionar
-          </Button>
+          <BtnSubmit textValue={'Adicionar'} />
         </div>
       </form>
     </Container>
