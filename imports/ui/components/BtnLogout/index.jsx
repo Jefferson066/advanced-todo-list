@@ -4,8 +4,8 @@ import Button from '@material-ui/core/Button';
 
 const logout = () => Meteor.logout();
 
-export const BtnLogout = () => (
-  <Button variant="contained" color="primary" onClick={logout}>
+export const BtnLogout = ({ color = 'primary', variant = 'contained' }) => (
+  <Button variant={variant} color={color} onClick={logout}>
     Logout
   </Button>
 );

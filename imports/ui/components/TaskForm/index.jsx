@@ -26,7 +26,7 @@ export const TaskForm = ({ handleSubmit, msg, name, text, setName, setText, setD
           <InputData setData={setData} />
         </div>
         <div className="btn">
-          <BtnSubmit textValue={'Adicionar'} />
+          <BtnSubmit textValue={'Adicionar!'} />
         </div>
       </form>
     </Container>

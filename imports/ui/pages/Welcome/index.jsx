@@ -3,7 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 
 import { BtnLogout } from '../../components/BtnLogout';
-import { Button, Typography } from '@material-ui/core';
+import { Btn } from '../../components/Btn';
+import { MyTypography } from '../../components/MyTypography';
 
 const URL_PATHS = {
   TASKS: '/authenticated/todolist',
@@ -23,13 +24,9 @@ export const Welcome = ({ history }) => {
         <BtnLogout />
       </div>
       <div className="main">
-        <Typography variant="h4" align="center">
-          Bem vindo {user.username}!
-        </Typography>
-        <div>
-          <Button variant="contained" color="primary" onClick={handleClick}>
-            Visualizar Tarefas
-          </Button>
+        <MyTypography variant={'h4'} textValue={` Bem vindo ${user.username}!`} />
+        <div className="btn">
+          <Btn event={handleClick} textValue={'Visualizar Tarefas'} />
         </div>
       </div>
     </div>
