@@ -29,10 +29,10 @@ export const TodoList = ({ history }) => {
         <BtnLogout />
       </div>
       <div className="main">
-        <Typography variant="h4" align="center">
-          Todo list
-        </Typography>
         <Container maxWidth="sm">
+          <Typography variant="h4" align="center">
+            Todo list
+          </Typography>
           <div>
             <Button variant="contained" color="primary" onClick={handleAddTaskClick}>
               Adicionar Tarefa!

@@ -22,6 +22,8 @@ body {
   font-size: 14px;
 }
 
+
+
 .btn-form {
   width: 100%;
   background: darkblue;
@@ -31,19 +33,18 @@ body {
   cursor: pointer;
 }
 
+
+
 .btn {
-  width: 100%;
-  background: darkblue;
-  color: white;
-  border: none;
-  padding: 10px 30px;
+  margin-top: 10px;
   cursor: pointer;
-
 }
 
-button:focus {
-  outline: 0;
+.input {
+  margin-top: 10px;
 }
+
+
 
 .app {
   display: flex;
@@ -75,18 +76,7 @@ button:focus {
   justify-content: center;
   align-items: center;
 }
-.task-form > div  > input {
-  flex-grow: 1;
-  box-sizing: border-box;
-  display: block;
-  padding: 10px 6px;
-  background: transparent;
-  border: 1px solid #aaa;
-  width: 300px;
-  font-size: 1em;
-  margin-right: 16px;
-  margin-top: 4px;
-}
+
 
 .login-form {
   display: flex;
@@ -134,6 +124,7 @@ button:focus {
 .msg-success{
   color: green;
 }
+
 .logout{
   display: flex;
   align-self: flex-end;

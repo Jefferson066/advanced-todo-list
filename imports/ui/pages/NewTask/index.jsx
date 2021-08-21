@@ -39,7 +39,6 @@ export const NewTask = () => {
           msg={msg}
           name={name}
           text={text}
-          data={data}
           setName={setName}
           setText={setText}
           setData={setData}
