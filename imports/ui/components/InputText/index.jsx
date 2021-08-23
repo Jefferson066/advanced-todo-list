@@ -1,14 +1,13 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-export const InputText = ({ text, setText }) => (
+export const InputText = ({ name, label, setText }) => (
   <TextField
     required
     type="text"
-    value={text}
+    name={name}
     onChange={(e) => setText(e.target.value)}
-    id="outlined-basic"
-    label="Descrição"
+    label={label}
     variant="outlined"
   />
 );

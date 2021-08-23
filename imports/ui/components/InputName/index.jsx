@@ -5,7 +5,7 @@ export const InputName = ({ name, setName, label }) => (
   <TextField
     required
     type="text"
-    value={name}
+    name={name}
     onChange={(e) => setName(e.target.value)}
     label={label}
     variant="outlined"

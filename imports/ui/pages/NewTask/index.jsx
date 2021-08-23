@@ -37,8 +37,6 @@ export const NewTask = () => {
         <TaskForm
           handleSubmit={handleSubmit}
           msg={msg}
-          name={name}
-          text={text}
           setName={setName}
           setText={setText}
           setData={setData}

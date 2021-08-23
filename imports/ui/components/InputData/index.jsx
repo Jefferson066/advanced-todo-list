@@ -4,7 +4,6 @@ import TextField from '@material-ui/core/TextField';
 export const InputData = ({ setData }) => (
   <TextField
     required
-    id="datetime-local"
     label="Data"
     variant="outlined"
     type="datetime-local"

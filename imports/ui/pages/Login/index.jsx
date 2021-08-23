@@ -26,8 +26,6 @@ export const Login = ({ history }) => {
     <FormLogin
       submit={handleSubmit}
       error={error}
-      username={username}
-      password={password}
       setUsername={setUsername}
       setPassword={setPassword}
     />
