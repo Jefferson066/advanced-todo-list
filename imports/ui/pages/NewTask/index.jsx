@@ -5,13 +5,21 @@ import { Meteor } from 'meteor/meteor';
 
 import { BtnLogout } from '../../components/BtnLogout';
 
-export const NewTask = () => {
+const URL_PATHS = {
+  TODOLIST: '/authenticated/todolist',
+};
+export const NewTask = ({ history }) => {
   const user = useTracker(() => Meteor.user());
 
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [data, setData] = useState('');
   const [msg, setMsg] = useState('');
+
+  const handleBackClick = (e) => {
+    e.preventDefault();
+    history.push(URL_PATHS.TODOLIST);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +43,7 @@ export const NewTask = () => {
       </div>
       <div className="main">
         <TaskForm
+          handleBackClick={handleBackClick}
           handleSubmit={handleSubmit}
           msg={msg}
           setName={setName}

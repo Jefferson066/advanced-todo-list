@@ -5,8 +5,9 @@ import { InputText } from '../InputText';
 import { InputData } from '../InputData';
 import { BtnSubmit } from '../BtnSubmit';
 import { MyTypography } from '../MyTypography';
+import { Btn } from '../Btn';
 
-export const TaskForm = ({ handleSubmit, msg, setName, setText, setData }) => {
+export const TaskForm = ({ handleSubmit, handleBackClick, msg, setName, setText, setData }) => {
   return (
     <Container maxWidth="sm">
       <form className="task-form" onSubmit={handleSubmit}>
@@ -26,7 +27,10 @@ export const TaskForm = ({ handleSubmit, msg, setName, setText, setData }) => {
           <InputData setData={setData} />
         </div>
         <div className="btn">
-          <BtnSubmit textValue={'Adicionar!'} />
+          <BtnSubmit textValue={'Adicionar'} />
+        </div>
+        <div className="btn">
+          <Btn textValue={'Voltar'} event={handleBackClick} />
         </div>
       </form>
     </Container>

@@ -7,7 +7,7 @@ import { Btn } from '../../components/Btn';
 import { MyTypography } from '../../components/MyTypography';
 
 const URL_PATHS = {
-  TASKS: '/authenticated/todolist',
+  TODOLIST: '/authenticated/todolist',
 };
 
 export const Welcome = ({ history }) => {
@@ -15,7 +15,7 @@ export const Welcome = ({ history }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    history.push(URL_PATHS.TASKS);
+    history.push(URL_PATHS.TODOLIST);
   };
 
   return (

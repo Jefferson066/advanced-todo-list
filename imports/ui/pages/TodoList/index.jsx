@@ -4,10 +4,11 @@ import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useTracker } from 'meteor/react-meteor-data';
 
 import { BtnLogout } from '../../components/BtnLogout';
+import { MyTypography } from '../../components/MyTypography';
+import { Btn } from '../../components/Btn';
+import { TaskList } from '../../components/TaskList';
 
-import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
-import { Container, Button, Typography } from '@material-ui/core';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import { Container } from '@material-ui/core';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
@@ -24,30 +25,17 @@ export const TodoList = ({ history }) => {
   };
 
   return (
-    <div className="app">
+    <div>
       <div className="logout">
         <BtnLogout />
       </div>
       <div className="main">
         <Container maxWidth="sm">
-          <Typography variant="h4" align="center">
-            Todo list
-          </Typography>
-          <div>
-            <Button variant="contained" color="primary" onClick={handleAddTaskClick}>
-              Adicionar Tarefa!
-            </Button>
+          <MyTypography variant={'h4'} textValue={'Todo List'} />
+          <div className="btn">
+            <Btn textValue={'Adicionar Tarefa'} event={handleAddTaskClick} />
           </div>
-          <List>
-            {tasks.map((task) => (
-              <ListItem button key={task._id}>
-                <ListItemIcon>
-                  <AssignmentIcon />
-                </ListItemIcon>
-                <ListItemText primary={task.name} secondary={task.username} />
-              </ListItem>
-            ))}
-          </List>
+          <TaskList tasks={tasks} />
         </Container>
       </div>
     </div>
