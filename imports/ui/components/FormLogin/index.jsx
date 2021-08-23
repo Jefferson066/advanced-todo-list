@@ -1,43 +1,30 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
-// eslint-disable-next-line react/prop-types
-export const FormLogin = ({ submit, error, setUsername, setPassword }) => (
-  <form onSubmit={submit} className="login-form">
-    {error && (
-      <div className="msg-error">
-        <h2>{error}</h2>
+import { Container } from '@material-ui/core';
+import { MyTypography } from '../MyTypography';
+import { InputName } from '../InputName';
+import { InputPassword } from '../InputPassword';
+import { BtnSubmit } from '../BtnSubmit';
+import { LinkComponent } from '../Link';
+
+export const FormLogin = ({ submit, error, setUsername, setPassword, username, password }) => (
+  <Container maxWidth="sm">
+    <form onSubmit={submit} className="login-form">
+      <MyTypography variant={'h5'} textValue={'Bem vindo ao todo list!'} />
+      {error && (
+        <div className="msg-error">
+          <MyTypography variant={'h6'} textValue={error} />
+        </div>
+      )}
+      <div>
+        <InputName name={username} label={'Username'} setName={setUsername} />
       </div>
-    )}
-    <h2>Bem vindo ao todo list!</h2>
-    <div>
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        placeholder="Username"
-        name="username"
-        required
-        onChange={(e) => setUsername(e.target.value)}
-      />
-    </div>
-
-    <div>
-      <label htmlFor="password ">Password</label>
-
-      <input
-        type="password"
-        placeholder="******"
-        name="password"
-        required
-        onChange={(e) => setPassword(e.target.value)}
-      />
-    </div>
-    <div>
-      <button className="btn-form" type="submit">
-        Log In
-      </button>
-    </div>
-    <Link className="link" to="/register">
-      Cadastrar
-    </Link>
-  </form>
+      <div>
+        <InputPassword label={'Password'} password={password} setPassword={setPassword} />
+      </div>
+      <div className="btn">
+        <BtnSubmit textValue={'Log In'} />
+      </div>
+      <LinkComponent textValue={'Cadastrar'} to={'/register'} />
+    </form>
+  </Container>
 );

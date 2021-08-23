@@ -16,7 +16,7 @@ export const NewTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!text && !name && !data) {
+    if (!text || !name || !data) {
       setMsg('');
       return;
     }

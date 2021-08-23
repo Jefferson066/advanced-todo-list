@@ -15,16 +15,19 @@ export const Login = ({ history }) => {
 
     Meteor.loginWithPassword(username, password, function (err) {
       if (err !== undefined) {
-        setError('Error in processing login!.');
+        setError('Error in processing login!');
         return;
       }
       history.push(URL_PATHS.HOME);
     });
   };
+  // add div app. main
   return (
     <FormLogin
       submit={handleSubmit}
       error={error}
+      username={username}
+      password={password}
       setUsername={setUsername}
       setPassword={setPassword}
     />

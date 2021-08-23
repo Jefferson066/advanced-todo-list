@@ -17,7 +17,7 @@ export const TaskForm = ({ handleSubmit, msg, name, text, setName, setText, setD
           </div>
         )}
         <div className="input">
-          <InputName name={name} setName={setName} />
+          <InputName name={name} label={'Nome'} setName={setName} />
         </div>
         <div className="input">
           <InputText text={text} setText={setText} />
