@@ -7,7 +7,17 @@ import { BtnSubmit } from '../BtnSubmit';
 import { MyTypography } from '../MyTypography';
 import { Btn } from '../Btn';
 
-export const TaskForm = ({ handleSubmit, handleBackClick, msg, setName, setText, setData }) => {
+export const TaskForm = ({
+  handleSubmit,
+  handleBackClick,
+  msg,
+  name,
+  text,
+  data,
+  setName,
+  setText,
+  setData,
+}) => {
   return (
     <Container maxWidth="sm">
       <form className="task-form" onSubmit={handleSubmit}>
@@ -18,13 +28,13 @@ export const TaskForm = ({ handleSubmit, handleBackClick, msg, setName, setText,
           </div>
         )}
         <div className="input">
-          <InputName name={'name'} label={'Nome'} setName={setName} />
+          <InputName name={'name'} value={name} label={'Nome'} setName={setName} />
         </div>
         <div className="input">
-          <InputText name={'description'} label="Descrição" setText={setText} />
+          <InputText name={'description'} value={text} label="Descrição" setText={setText} />
         </div>
         <div className="input">
-          <InputData setData={setData} />
+          <InputData value={data} setData={setData} />
         </div>
         <div className="btn">
           <BtnSubmit textValue={'Adicionar'} />

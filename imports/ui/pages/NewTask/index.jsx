@@ -45,6 +45,9 @@ export const NewTask = ({ history }) => {
         <TaskForm
           handleBackClick={handleBackClick}
           handleSubmit={handleSubmit}
+          name={name}
+          text={text}
+          data={data}
           msg={msg}
           setName={setName}
           setText={setText}

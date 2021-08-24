@@ -6,7 +6,7 @@ import { InputPassword } from '../InputPassword';
 import { BtnSubmit } from '../BtnSubmit';
 import { LinkComponent } from '../Link';
 
-export const FormLogin = ({ submit, error, setUsername, setPassword }) => (
+export const FormLogin = ({ submit, error, username, password, setUsername, setPassword }) => (
   <Container maxWidth="sm">
     <form onSubmit={submit} className="login-form">
       <MyTypography variant={'h5'} textValue={'Bem vindo ao todo list!'} />
@@ -16,10 +16,15 @@ export const FormLogin = ({ submit, error, setUsername, setPassword }) => (
         </div>
       )}
       <div className="input">
-        <InputName name={'username'} label={'Username'} setName={setUsername} />
+        <InputName name={'username'} value={username} label={'Username'} setName={setUsername} />
       </div>
       <div className="input">
-        <InputPassword label={'Password'} name={'password'} setPassword={setPassword} />
+        <InputPassword
+          label={'Password'}
+          value={password}
+          name={'password'}
+          setPassword={setPassword}
+        />
       </div>
       <div className="btn">
         <BtnSubmit textValue={'Log In'} />
