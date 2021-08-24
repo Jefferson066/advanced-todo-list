@@ -23,6 +23,17 @@ export const TodoList = ({ history }) => {
     e.preventDefault();
     history.push(URL_PATHS.NEWTASK);
   };
+  //const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
+
+  const deleteTask = (e, { _id }) => {
+    console.log(e);
+    e.preventDefault();
+    let msg = confirm('Deseja realmente excluir o item ?');
+    if (msg == true) {
+      //remocao
+      Meteor.call('tasks.remove', _id);
+    }
+  };
 
   return (
     <div>
@@ -35,7 +46,7 @@ export const TodoList = ({ history }) => {
           <div className="btn">
             <Btn textValue={'Adicionar Tarefa'} event={handleAddTaskClick} />
           </div>
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasks} onDeleteClick={deleteTask} />
         </Container>
       </div>
     </div>
