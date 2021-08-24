@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import { BtnLogout } from '../../components/BtnLogout';
-import { NotPermissionEdit } from '../../components/NotPermissionEdit';
 import { EditTaskForm } from '../../components/EditTaskForm';
 
 const URL_PATHS = {
@@ -56,27 +55,21 @@ export const EditTask = ({ history }) => {
       <div className="logout">
         <BtnLogout />
       </div>
-      {!task ? (
-        <div className="main">
-          <NotPermissionEdit handleBackClick={handleBackClick} />
-        </div>
-      ) : (
-        <div className="main">
-          <EditTaskForm
-            handleBackClick={handleBackClick}
-            handleSubmit={handleSubmit}
-            handleStatusChange={handleStatusChange}
-            msg={msg}
-            viewName={viewName}
-            viewText={viewText}
-            viewData={viewData}
-            viewStatus={viewStatus}
-            setViewName={setViewName}
-            setViewText={setViewText}
-            setViewData={setViewData}
-          />
-        </div>
-      )}
+      <div className="main">
+        <EditTaskForm
+          handleBackClick={handleBackClick}
+          handleSubmit={handleSubmit}
+          handleStatusChange={handleStatusChange}
+          msg={msg}
+          viewName={viewName}
+          viewText={viewText}
+          viewData={viewData}
+          viewStatus={viewStatus}
+          setViewName={setViewName}
+          setViewText={setViewText}
+          setViewData={setViewData}
+        />
+      </div>
     </div>
   );
 };

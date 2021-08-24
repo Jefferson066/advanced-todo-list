@@ -27,7 +27,12 @@ export const TodoList = ({ history }) => {
 
   const editTaskClick = (e, { _id }) => {
     e.preventDefault();
-    history.push(URL_PATHS.EDITTASK + `/${_id}`);
+    const task = TasksCollection.findOne({ _id: _id, userId: user._id });
+    if (task) {
+      history.push(URL_PATHS.EDITTASK + `/${_id}`);
+    } else {
+      alert('Voçê não trem permissão para editar essa tarefa!');
+    }
   };
 
   const deleteTask = (e, { _id }) => {
