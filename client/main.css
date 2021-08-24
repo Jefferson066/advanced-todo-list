@@ -23,18 +23,6 @@ body {
 }
 
 
-
-.btn-form {
-  width: 100%;
-  background: darkblue;
-  color: white;
-  border: none;
-  padding: 10px 30px;
-  cursor: pointer;
-}
-
-
-
 .btn {
   margin-top: 10px;
   cursor: pointer;
@@ -43,8 +31,6 @@ body {
 .input {
   margin-top: 10px;
 }
-
-
 
 .app {
   display: flex;
@@ -82,6 +68,13 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.center{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
