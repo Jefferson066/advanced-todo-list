@@ -30,6 +30,7 @@ Meteor.methods({
       createdAt: new Date(),
       userId: this.userId,
       username: username,
+      status: 'cadastrada',
     });
   },
 
