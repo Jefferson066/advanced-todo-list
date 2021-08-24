@@ -23,12 +23,10 @@ export const TodoList = ({ history }) => {
     e.preventDefault();
     history.push(URL_PATHS.NEWTASK);
   };
-  //const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
   const deleteTask = (e, { _id }) => {
-    console.log(e);
     e.preventDefault();
-    let msg = confirm('Deseja realmente excluir o item ?');
+    let msg = confirm('Deseja excluir o item ?');
     if (msg == true) {
       //remocao
       Meteor.call('tasks.remove', _id);
