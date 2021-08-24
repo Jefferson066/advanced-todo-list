@@ -48,4 +48,26 @@ Meteor.methods({
 
     TasksCollection.remove(taskId);
   },
+  'tasks.update'(_id, viewName, viewText, viewData, viewStatus, username) {
+    check(_id, String);
+    check(viewName, String);
+    check(viewText, String);
+    check(viewData, String);
+    check(viewStatus, String);
+    check(username, String);
+
+    if (!this.userId) {
+      throw new Meteor.Error('Not authorized!');
+    }
+
+    TasksCollection.update(_id, {
+      name: viewName,
+      text: viewText,
+      data: viewData,
+      createdAt: new Date(),
+      userId: this.userId,
+      username: username,
+      status: viewStatus,
+    });
+  },
 });
