@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router-dom';
@@ -6,10 +6,11 @@ import { TasksCollection } from '../../../api/database/TasksCollection';
 
 import { BtnLogout } from '../../components/BtnLogout';
 import { Btn } from '../../components/Btn';
-import { MyTypography } from '../../components/MyTypography';
+//import { MyTypography } from '../../components/MyTypography';
 
 import { Container } from '@material-ui/core';
-import { useState } from 'react';
+//import { useState } from 'react';
+import { NotPermissionEdit } from '../../components/NotPermissionEdit';
 
 const URL_PATHS = {
   TODOLIST: '/authenticated/todolist',
@@ -35,17 +36,7 @@ export const EditTask = ({ history }) => {
       </div>
       {!task ? (
         <div className="main">
-          <Container maxWidth="sm">
-            <MyTypography
-              variant={'h4'}
-              textValue={'Voçê não tem permissão para editar essa tarefa!'}
-            />
-            <div className="center">
-              <div className="btn">
-                <Btn textValue={'Voltar'} event={handleBackClick} />
-              </div>
-            </div>
-          </Container>
+          <NotPermissionEdit handleBackClick={handleBackClick} />
         </div>
       ) : (
         <div className="main">
