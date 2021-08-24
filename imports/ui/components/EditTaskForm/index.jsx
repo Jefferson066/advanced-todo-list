@@ -24,7 +24,7 @@ export const EditTaskForm = ({
   return (
     <Container maxWidth="sm">
       <form className="task-form" onSubmit={handleSubmit}>
-        <MyTypography variant={'h4'} textValue={'Adicionar Tarefa'} />
+        <MyTypography variant={'h4'} textValue={'Editar Tarefa'} />
         {msg && (
           <div className="msg-success">
             <MyTypography variant={'h5'} textValue={msg} />
