@@ -12,6 +12,7 @@ import { Container } from '@material-ui/core';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
+  EDITTASK: '/authenticated/todolist/edit',
 };
 
 export const TodoList = ({ history }) => {
@@ -22,6 +23,11 @@ export const TodoList = ({ history }) => {
   const handleAddTaskClick = (e) => {
     e.preventDefault();
     history.push(URL_PATHS.NEWTASK);
+  };
+
+  const editTaskClick = (e, { _id }) => {
+    e.preventDefault();
+    history.push(URL_PATHS.EDITTASK + `/${_id}`);
   };
 
   const deleteTask = (e, { _id }) => {
@@ -44,7 +50,7 @@ export const TodoList = ({ history }) => {
           <div className="btn">
             <Btn textValue={'Adicionar Tarefa'} event={handleAddTaskClick} />
           </div>
-          <TaskList tasks={tasks} onDeleteClick={deleteTask} />
+          <TaskList tasks={tasks} onDeleteClick={deleteTask} onEditClick={editTaskClick} />
         </Container>
       </div>
     </div>

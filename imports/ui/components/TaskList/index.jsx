@@ -4,7 +4,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
 
-export const TaskList = ({ tasks, onDeleteClick }) => (
+export const TaskList = ({ tasks, onDeleteClick, onEditClick }) => (
   <Box component="div" my={2} overflow="hidden" bgcolor="background.paper">
     <List>
       {tasks.map((task) => (
@@ -13,7 +13,7 @@ export const TaskList = ({ tasks, onDeleteClick }) => (
             <AssignmentIcon />
           </ListItemIcon>
           <ListItemText primary={task.name} secondary={task.username} />
-          <ListItemIcon onClick={() => alert('editando')}>
+          <ListItemIcon onClick={(e) => onEditClick(e, task)}>
             <Edit />
           </ListItemIcon>
           <ListItemIcon onClick={(e) => onDeleteClick(e, task)}>
