@@ -27,8 +27,11 @@ export const InputStatus = ({ handleStatusChange, viewStatus }) => (
     helperText="Selecione o status da tarefa!"
     variant="outlined"
   >
-    <MenuItem value={'cadastrada'}>Cadastrada</MenuItem>
-    <MenuItem value={'andamento'}>Andamento</MenuItem>
-    <MenuItem value={'concluida'}>Concluída</MenuItem>
+    {viewStatus == 'cadastrada' && <MenuItem value={'cadastrada'}>Cadastrada</MenuItem>}
+    {viewStatus == 'cadastrada' && <MenuItem value={'andamento'}>Andamento</MenuItem>}
+    {viewStatus == 'andamento' && <MenuItem value={'andamento'}>Andamento</MenuItem>}
+    {viewStatus == 'andamento' && <MenuItem value={'concluida'}>Concluída</MenuItem>}
+    {viewStatus == 'concluida' && <MenuItem value={'concluida'}>Concluída</MenuItem>}
+    {viewStatus == 'concluida' && <MenuItem value={'cadastrada'}>Cadastrada</MenuItem>}
   </TextField>
 );
