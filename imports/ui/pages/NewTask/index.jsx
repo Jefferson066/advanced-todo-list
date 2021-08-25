@@ -14,11 +14,16 @@ export const NewTask = ({ history }) => {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [data, setData] = useState('');
+  const [isPrivate, setIsPrivate] = useState('');
   const [msg, setMsg] = useState('');
 
   const handleBackClick = (e) => {
     e.preventDefault();
     history.push(URL_PATHS.TODOLIST);
+  };
+
+  const handlePrivateChange = (e) => {
+    setIsPrivate(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -29,11 +34,12 @@ export const NewTask = ({ history }) => {
       return;
     }
 
-    Meteor.call('tasks.insert', name, text, data, user.username);
+    Meteor.call('tasks.insert', name, text, data, user.username, isPrivate);
     setMsg('Tarefa adicionada!');
     setText('');
     setName('');
     setData('');
+    setIsPrivate('');
   };
 
   return (
@@ -45,9 +51,11 @@ export const NewTask = ({ history }) => {
         <TaskForm
           handleBackClick={handleBackClick}
           handleSubmit={handleSubmit}
+          handlePrivateChange={handlePrivateChange}
           name={name}
           text={text}
           data={data}
+          isPrivate={isPrivate}
           msg={msg}
           setName={setName}
           setText={setText}

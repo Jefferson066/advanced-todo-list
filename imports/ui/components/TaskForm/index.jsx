@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 import { InputName } from '../InputName';
 import { InputText } from '../InputText';
 import { InputData } from '../InputData';
@@ -9,11 +11,13 @@ import { Btn } from '../Btn';
 
 export const TaskForm = ({
   handleSubmit,
+  handlePrivateChange,
   handleBackClick,
   msg,
   name,
   text,
   data,
+  isPrivate,
   setName,
   setText,
   setData,
@@ -35,6 +39,20 @@ export const TaskForm = ({
         </div>
         <div className="input">
           <InputData value={data} setData={setData} />
+        </div>
+        <div className="input">
+          <TextField
+            id="outlined-select-currency"
+            select
+            onChange={handlePrivateChange}
+            value={isPrivate}
+            label="Selecione"
+            helperText="Selecione se a tarefa é Pública/Pessoal"
+            variant="outlined"
+          >
+            <MenuItem value={'isPublic'}>Pública</MenuItem>
+            <MenuItem value={'isPrivate'}>Pessoal</MenuItem>
+          </TextField>
         </div>
         <div className="btn">
           <BtnSubmit textValue={'Adicionar'} />

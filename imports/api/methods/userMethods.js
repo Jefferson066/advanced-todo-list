@@ -15,11 +15,12 @@ Meteor.methods({
     }
   },
 
-  'tasks.insert'(name, text, data, username) {
+  'tasks.insert'(name, text, data, username, isPrivate) {
     check(name, String);
     check(text, String);
     check(data, String);
     check(username, String);
+    check(isPrivate, String);
     if (!this.userId) {
       throw new Meteor.Error('Not authorized!');
     }
@@ -31,6 +32,7 @@ Meteor.methods({
       userId: this.userId,
       username: username,
       status: 'cadastrada',
+      private: isPrivate,
     });
   },
 

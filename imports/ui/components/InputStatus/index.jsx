@@ -1,21 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-/*
-const currencies = [
-  {
-    value: 'cadastrada',
-    label: 'Cadastrada',
-  },
-  {
-    value: 'andamento',
-    label: 'Em Andamento',
-  },
-  {
-    value: 'concluida',
-    label: 'Concluída',
-  },                      MOSTRA O ATUAL E O PROXIMO!!!!!!!!!!!!!!!!!!
-];*/
 
 export const InputStatus = ({ handleStatusChange, viewStatus }) => (
   <TextField
