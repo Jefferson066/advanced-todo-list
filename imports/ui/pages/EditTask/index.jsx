@@ -15,7 +15,7 @@ const URL_PATHS = {
 export const EditTask = ({ history }) => {
   const { _id } = useParams(); // _id da task selecionada na list
   const user = useTracker(() => Meteor.user());
-  const task = TasksCollection.findOne({ _id: _id, userId: user._id });
+  const task = useTracker(() => TasksCollection.findOne({ _id: _id, userId: user._id }));
 
   const [viewName, setViewName] = useState('');
   const [viewText, setViewText] = useState('');

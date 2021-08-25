@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-
+/*
 const currencies = [
   {
     value: 'cadastrada',
@@ -14,23 +14,21 @@ const currencies = [
   {
     value: 'concluida',
     label: 'Concluída',
-  },
-];
+  },                      MOSTRA O ATUAL E O PROXIMO!!!!!!!!!!!!!!!!!!
+];*/
 
 export const InputStatus = ({ handleStatusChange, viewStatus }) => (
   <TextField
     id="outlined-select-currency"
     select
-    label="Select1"
+    label="Select"
     onChange={handleStatusChange}
     value={viewStatus}
     helperText="Selecione o status da tarefa!"
     variant="outlined"
   >
-    {currencies.map((option) => (
-      <MenuItem key={option.value} value={option.value}>
-        {option.label}
-      </MenuItem>
-    ))}
+    <MenuItem value={'cadastrada'}>Cadastrada</MenuItem>
+    <MenuItem value={'andamento'}>Andamento</MenuItem>
+    <MenuItem value={'concluida'}>Concluída</MenuItem>
   </TextField>
 );

@@ -27,20 +27,21 @@ export const TodoList = ({ history }) => {
 
   const editTaskClick = (e, { _id }) => {
     e.preventDefault();
-    const task = TasksCollection.findOne({ _id: _id, userId: user._id });
-    if (task) {
-      history.push(URL_PATHS.EDITTASK + `/${_id}`);
-    } else {
-      alert('Voçê não trem permissão para editar essa tarefa!');
-    }
+
+    history.push(URL_PATHS.EDITTASK + `/${_id}`);
   };
 
   const deleteTask = (e, { _id }) => {
     e.preventDefault();
-    let msg = confirm('Deseja excluir o item ?');
-    if (msg == true) {
+    const task = TasksCollection.findOne({ _id: _id, userId: user._id });
+    if (task) {
+      let msg = confirm('Deseja excluir o item ?');
+      if (msg == true) {
+        Meteor.call('tasks.remove', _id);
+      }
       //remocao
-      Meteor.call('tasks.remove', _id);
+    } else {
+      alert('Você não tem permissão para apagar esse item!');
     }
   };
 
