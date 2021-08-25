@@ -47,13 +47,11 @@ export const EditTaskForm = ({
         <div className="input">
           <InputStatus viewStatus={viewStatus} handleStatusChange={handleStatusChange} />
         </div>
-        <div className="btn">
-          <BtnSubmit textValue={'Editar'} />
+        <div className="center btn">
+          <Btn textValue={'Voltar'} event={handleBackClick} />
+          <BtnSubmit textValue={'Salvar'} />
         </div>
       </form>
-      <div className="center">
-        <Btn textValue={'Voltar'} event={handleBackClick} />
-      </div>
     </Container>
   );
 };
