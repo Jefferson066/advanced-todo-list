@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import { InputName } from '../InputName';
-import { InputText } from '../InputText';
-import { InputData } from '../InputData';
 
 import { MyTypography } from '../MyTypography';
 import { Btn } from '../Btn';
+import { InputViewName } from '../InputViewName';
+import { InputViewText } from '../InputViewText';
+import { InputViewData } from '../InputViewData';
+import { InputViewStatus } from '../InputViewStatus';
 
 export const ViewTaskForm = ({
   privateTask,
@@ -21,16 +22,16 @@ export const ViewTaskForm = ({
       <form className="task-form">
         <MyTypography variant={'h4'} textValue={'Tarefa'} />
         <div className="input">
-          <InputName name={'name'} value={viewName} label={'Nome'} />
+          <InputViewName value={viewName} />
         </div>
         <div className="input">
-          <InputText name={'description'} value={viewText} label="Descrição" />
+          <InputViewText value={viewText} />
         </div>
         <div className="input">
-          <InputData value={viewData} />
+          <InputViewData value={viewData} />
         </div>
         <div className="input">
-          <InputText name={'situacao'} value={viewStatus} label="Situação" />
+          <InputViewStatus value={viewStatus} />
         </div>
         <div className="center btn">
           <Btn textValue={'Voltar'} event={handleBackClick} />
