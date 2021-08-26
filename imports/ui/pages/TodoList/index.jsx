@@ -16,9 +16,14 @@ const URL_PATHS = {
 };
 
 export const TodoList = ({ history }) => {
-  // eslint-disable-next-line no-unused-vars
   const user = useTracker(() => Meteor.user());
-  const tasks = useTracker(() => TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch());
+
+  const { tasks } = useTracker(() => {
+    Meteor.subscribe('tasks.private');
+    Meteor.subscribe('tasks.public');
+    const tasks = TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch();
+    return { tasks };
+  });
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
@@ -27,7 +32,6 @@ export const TodoList = ({ history }) => {
 
   const editTaskClick = (e, { _id }) => {
     e.preventDefault();
-
     history.push(URL_PATHS.EDITTASK + `/${_id}`);
   };
 

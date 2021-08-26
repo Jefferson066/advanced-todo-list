@@ -7,11 +7,15 @@ import { BtnSubmit } from '../BtnSubmit';
 import { MyTypography } from '../MyTypography';
 import { Btn } from '../Btn';
 import { InputStatus } from '../InputStatus';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export const EditTaskForm = ({
+  handlePrivateChange,
   handleSubmit,
   handleBackClick,
   handleStatusChange,
+  isPrivate,
   msg,
   viewName,
   viewText,
@@ -46,6 +50,20 @@ export const EditTaskForm = ({
         </div>
         <div className="input">
           <InputStatus viewStatus={viewStatus} handleStatusChange={handleStatusChange} />
+        </div>
+        <div>
+          <TextField
+            id="outlined-select-currency"
+            select
+            onChange={handlePrivateChange}
+            value={isPrivate}
+            label="Selecione"
+            helperText="Selecione se a tarefa é Pública/Pessoal"
+            variant="outlined"
+          >
+            <MenuItem value={'publica'}>Pública</MenuItem>
+            <MenuItem value={'pessoal'}>Pessoal</MenuItem>
+          </TextField>
         </div>
         <div className="center btn">
           <Btn textValue={'Voltar'} event={handleBackClick} />

@@ -50,8 +50,8 @@ export const TaskForm = ({
             helperText="Selecione se a tarefa é Pública/Pessoal"
             variant="outlined"
           >
-            <MenuItem value={'isPublic'}>Pública</MenuItem>
-            <MenuItem value={'isPrivate'}>Pessoal</MenuItem>
+            <MenuItem value={'publica'}>Pública</MenuItem>
+            <MenuItem value={'pessoal'}>Pessoal</MenuItem>
           </TextField>
         </div>
         <div className="btn">

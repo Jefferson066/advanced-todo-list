@@ -10,6 +10,7 @@ import { InputViewStatus } from '../InputViewStatus';
 
 export const ViewTaskForm = ({
   privateTask,
+  isPrivate,
   handleBackClick,
   viewName,
   viewText,
@@ -32,6 +33,9 @@ export const ViewTaskForm = ({
         </div>
         <div className="input">
           <InputViewStatus value={viewStatus} />
+        </div>
+        <div className="input">
+          <InputViewStatus value={isPrivate} />
         </div>
         <div className="center btn">
           <Btn textValue={'Voltar'} event={handleBackClick} />

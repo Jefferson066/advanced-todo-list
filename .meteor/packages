@@ -21,4 +21,3 @@ static-html             # Define static page content in .html files
 react-meteor-data       # React higher-order component for reactively tracking Meteor data
 dev-error-overlay
 accounts-password
-autopublish

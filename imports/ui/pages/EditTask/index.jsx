@@ -4,13 +4,9 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router-dom';
 import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { useEffect } from 'react';
 
 import { BtnLogout } from '../../components/BtnLogout';
 import { ViewTaskForm } from '../../components/ViewTaskForm';
-// eslint-disable-next-line no-unused-vars
-import { BtnSubmit } from '../../components/BtnSubmit';
 import { EditTaskForm } from '../../components/EditTaskForm';
 
 const URL_PATHS = {
@@ -19,15 +15,20 @@ const URL_PATHS = {
 export const EditTask = ({ history }) => {
   const { _id } = useParams(); // _id da task selecionada na list
   const user = useTracker(() => Meteor.user());
-  const privateTask = useTracker(() => TasksCollection.findOne({ _id: _id, userId: user._id }));
-  const publicTask = useTracker(() => TasksCollection.findOne({ _id: _id }));
+  const { privateTask, publicTask } = useTracker(() => {
+    Meteor.subscribe('tasks.private');
+    Meteor.subscribe('tasks.public');
+    const privateTask = TasksCollection.findOne({ _id: _id, userId: user._id }); //bugado
+    const publicTask = TasksCollection.findOne({ _id: _id });
+    return { privateTask, publicTask };
+  });
 
   const [view, setView] = useState(true);
-
   const [viewName, setViewName] = useState(publicTask.name);
   const [viewText, setViewText] = useState(publicTask.text);
   const [viewData, setViewData] = useState(publicTask.data);
   const [viewStatus, setViewStatus] = useState(publicTask.status);
+  const [isPrivate, setIsPrivate] = useState(publicTask.private);
   // eslint-disable-next-line no-unused-vars
   const [msg, setMsg] = useState('');
 
@@ -35,13 +36,22 @@ export const EditTask = ({ history }) => {
     e.preventDefault();
     history.push(URL_PATHS.TODOLIST);
   };
-  // eslint-disable-next-line no-unused-vars
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!viewName || !viewText || !viewData) {
       return;
     }
-    Meteor.call('tasks.update', _id, viewName, viewText, viewData, viewStatus, user.username);
+    Meteor.call(
+      'tasks.update',
+      _id,
+      viewName,
+      viewText,
+      viewData,
+      viewStatus,
+      user.username,
+      isPrivate,
+    );
     setMsg('Tarefa Editada!');
   };
 
@@ -54,6 +64,9 @@ export const EditTask = ({ history }) => {
     setView(false);
   };
 
+  const handlePrivateChange = (e) => {
+    setIsPrivate(e.target.value);
+  };
   return (
     <div className="app">
       <div className="logout">
@@ -64,8 +77,9 @@ export const EditTask = ({ history }) => {
           <ViewTaskForm
             handleBackClick={handleBackClick}
             handleStatusChange={handleStatusChange}
-            privateTask={privateTask}
             setView={handleEditClick}
+            privateTask={privateTask}
+            isPrivate={isPrivate}
             viewName={viewName}
             viewText={viewText}
             viewData={viewData}
@@ -79,8 +93,10 @@ export const EditTask = ({ history }) => {
             handleBackClick={handleBackClick}
             handleSubmit={handleSubmit}
             handleStatusChange={handleStatusChange}
+            handlePrivateChange={handlePrivateChange}
             msg={msg}
             viewName={viewName}
+            isPrivate={isPrivate}
             viewText={viewText}
             viewData={viewData}
             viewStatus={viewStatus}
