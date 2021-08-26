@@ -32,9 +32,9 @@ export const UserProfile = ({ history }) => {
   const [birthDate, setBirthDate] = useState(user.profile.birthDate);
   const [sex, setSex] = useState(user.profile.sex);
   const [company, setCompany] = useState(user.profile.company);
-  const [img, setImg] = useState('');
+  const [imgBase64, setBase64] = useState('');
+
   const [msg, setMsg] = useState('');
-  console.log('img =>', img, 'name =>', name);
 
   const handleBackClick = (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ export const UserProfile = ({ history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Meteor.call('user.update', name, email, birthDate, sex, company);
+    Meteor.call('user.update', name, email, birthDate, sex, company, imgBase64);
     setMsg('Dados Editados!');
   };
 
@@ -52,17 +52,18 @@ export const UserProfile = ({ history }) => {
     setView(false);
   };
 
-  /*
   const handleUploadClick = (e) => {
     e.preventDefault();
-    console.log('upload de imagem');
-    console.log('--------');
     const file = e.target.files[0];
-    console.log('file', file);
     const reader = new FileReader();
-    const url = reader.readAsDataURL(file);
-    console.log('url', url);
-  };*/
+    reader.onload = _handleReaderLoaded;
+    reader.readAsBinaryString(file);
+  };
+
+  const _handleReaderLoaded = (e) => {
+    let binaryString = e.target.result;
+    setBase64(btoa(binaryString));
+  };
 
   return (
     <div className="app">
@@ -118,7 +119,7 @@ export const UserProfile = ({ history }) => {
                   id="contained-button-file"
                   multiple
                   type="file"
-                  onChange={(e) => setImg(e.target.files[0])}
+                  onChange={handleUploadClick}
                 />
                 <label htmlFor="contained-button-file">
                   <Fab component="span" style={{ margin: 10 }}>
@@ -175,3 +176,4 @@ export const UserProfile = ({ history }) => {
     </div>
   );
 };
+//  onChange={(e) => setImg(e.target.files[0])}

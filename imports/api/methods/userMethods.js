@@ -11,26 +11,42 @@ Meteor.methods({
       Accounts.createUser({
         username: username,
         password: password,
-        profile: {},
+        profile: {
+          name: '',
+          email: '',
+          birthDate: '',
+          sex: '',
+          company: '',
+          image: '',
+        },
       });
     }
   },
-  'user.update'(name, email, birthDate, sex, company) {
+
+  'user.update'(name, email, birthDate, sex, company, img) {
     check(name, String);
     check(email, String);
     check(company, String);
     check(birthDate, String);
     check(sex, String);
-
+    check(img, String);
     if (!this.userId) {
       throw new Meteor.Error('Not authorized!');
     }
     Meteor.users.update(this.userId, {
       $set: {
-        profile: { name: name, email: email, birthDate: birthDate, sex: sex, company: company },
+        profile: {
+          name: name,
+          email: email,
+          birthDate: birthDate,
+          sex: sex,
+          company: company,
+          image: img,
+        },
       },
     });
   },
+
   'tasks.insert'(name, text, data, username, isPrivate) {
     check(name, String);
     check(text, String);
