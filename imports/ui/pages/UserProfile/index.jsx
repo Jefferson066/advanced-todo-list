@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { Container } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Fab from '@material-ui/core/Fab';
+import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
 import { BtnLogout } from '../../components/BtnLogout';
 import { MyTypography } from '../../components/MyTypography';
@@ -30,8 +32,9 @@ export const UserProfile = ({ history }) => {
   const [birthDate, setBirthDate] = useState(user.profile.birthDate);
   const [sex, setSex] = useState(user.profile.sex);
   const [company, setCompany] = useState(user.profile.company);
-  // eslint-disable-next-line no-unused-vars
+  const [img, setImg] = useState('');
   const [msg, setMsg] = useState('');
+  console.log('img =>', img, 'name =>', name);
 
   const handleBackClick = (e) => {
     e.preventDefault();
@@ -49,6 +52,18 @@ export const UserProfile = ({ history }) => {
     setView(false);
   };
 
+  /*
+  const handleUploadClick = (e) => {
+    e.preventDefault();
+    console.log('upload de imagem');
+    console.log('--------');
+    const file = e.target.files[0];
+    console.log('file', file);
+    const reader = new FileReader();
+    const url = reader.readAsDataURL(file);
+    console.log('url', url);
+  };*/
+
   return (
     <div className="app">
       <div className="logout">
@@ -59,6 +74,7 @@ export const UserProfile = ({ history }) => {
           <Container maxWidth="sm">
             <form className="task-form" onSubmit={handleSubmit}>
               <MyTypography variant={'h4'} textValue={'Dados do usuario'} />
+              <div className="input"></div>
               <div className="input">
                 <InputViewName name={'name'} value={name} label={'Nome'} />
               </div>
@@ -95,6 +111,21 @@ export const UserProfile = ({ history }) => {
                   <MyTypography variant={'h5'} textValue={msg} />
                 </div>
               )}
+              <div>
+                <input
+                  accept="image/*"
+                  style={{ display: 'none' }}
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={(e) => setImg(e.target.files[0])}
+                />
+                <label htmlFor="contained-button-file">
+                  <Fab component="span" style={{ margin: 10 }}>
+                    <AddPhotoAlternateIcon />
+                  </Fab>
+                </label>
+              </div>
               <div className="input">
                 <InputName name={'Nome'} value={name} label="Nome" setName={setName} />
               </div>
