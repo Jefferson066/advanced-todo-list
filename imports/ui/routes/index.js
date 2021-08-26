@@ -8,6 +8,7 @@ import { App } from '../App';
 import { TodoList } from '../pages/TodoList';
 import { NewTask } from '../pages/NewTask';
 import { EditTask } from '../pages/EditTask';
+import { UserProfile } from '../pages/UserProfile';
 
 export default function Routes({ history }) {
   return (
@@ -29,6 +30,9 @@ export default function Routes({ history }) {
       </MyRoute>
       <MyRoute exact path={'/authenticated/todolist/edit/:_id'}>
         <EditTask history={history} />
+      </MyRoute>
+      <MyRoute exact path={'/authenticated/userprofile'}>
+        <UserProfile history={history} />
       </MyRoute>
       <Route exact path="*">
         <Page404 />

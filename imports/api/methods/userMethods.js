@@ -2,7 +2,7 @@ import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { TasksCollection } from '../database/TasksCollection';
-
+// Meteor.users.update. atualizar
 Meteor.methods({
   'user.create'(username, password) {
     check(username, String);
@@ -11,10 +11,26 @@ Meteor.methods({
       Accounts.createUser({
         username: username,
         password: password,
+        profile: {},
       });
     }
   },
+  'user.update'(name, email, birthDate, sex, company) {
+    check(name, String);
+    check(email, String);
+    check(company, String);
+    check(birthDate, String);
+    check(sex, String);
 
+    if (!this.userId) {
+      throw new Meteor.Error('Not authorized!');
+    }
+    Meteor.users.update(this.userId, {
+      $set: {
+        profile: { name: name, email: email, birthDate: birthDate, sex: sex, company: company },
+      },
+    });
+  },
   'tasks.insert'(name, text, data, username, isPrivate) {
     check(name, String);
     check(text, String);
