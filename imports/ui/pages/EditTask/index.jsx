@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 import { BtnLogout } from '../../components/BtnLogout';
 import { ViewTaskForm } from '../../components/ViewTaskForm';
+import { MyDrawer } from '../../components/Drawer';
 import { EditTaskForm } from '../../components/EditTaskForm';
 
 const URL_PATHS = {
@@ -73,6 +74,7 @@ export const EditTask = ({ history }) => {
         <BtnLogout />
       </div>
       <div className="main">
+        <MyDrawer />
         {view ? (
           <ViewTaskForm
             handleBackClick={handleBackClick}

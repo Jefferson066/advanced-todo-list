@@ -1,10 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-
 import { BtnLogout } from '../../components/BtnLogout';
 import { Btn } from '../../components/Btn';
 import { MyTypography } from '../../components/MyTypography';
+import { MyDrawer } from '../../components/Drawer';
 
 const URL_PATHS = {
   TODOLIST: '/authenticated/todolist',
@@ -24,8 +24,9 @@ export const Welcome = ({ history }) => {
         <BtnLogout />
       </div>
       <div className="main">
+        <MyDrawer />
         <MyTypography variant={'h4'} textValue={` Bem vindo ${user.username}!`} />
-        <div className="btn">
+        <div className=" center">
           <Btn event={handleClick} textValue={'Visualizar Tarefas'} />
         </div>
       </div>

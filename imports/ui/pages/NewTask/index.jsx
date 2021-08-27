@@ -4,6 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
 import { BtnLogout } from '../../components/BtnLogout';
+import { MyDrawer } from '../../components/Drawer';
 
 const URL_PATHS = {
   TODOLIST: '/authenticated/todolist',
@@ -48,6 +49,7 @@ export const NewTask = ({ history }) => {
         <BtnLogout />
       </div>
       <div className="main">
+        <MyDrawer />
         <TaskForm
           handleBackClick={handleBackClick}
           handleSubmit={handleSubmit}

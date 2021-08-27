@@ -40,7 +40,7 @@ body {
 
 .main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-grow: 1;
   overflow: auto;
   background: #F5F5DC;

@@ -16,6 +16,7 @@ import { InputViewName } from '../../components/InputViewName';
 import { Btn } from '../../components/Btn';
 import { BtnSubmit } from '../../components/BtnSubmit';
 import { InputViewData } from '../../components/InputViewData';
+import { MyDrawer } from '../../components/Drawer';
 import { InputData } from '../../components/InputData';
 
 const URL_PATHS = {
@@ -23,7 +24,6 @@ const URL_PATHS = {
 };
 
 export const UserProfile = ({ history }) => {
-  // eslint-disable-next-line no-unused-vars
   const user = useTracker(() => Meteor.user());
 
   const [view, setView] = useState(true);
@@ -71,6 +71,7 @@ export const UserProfile = ({ history }) => {
         <BtnLogout />
       </div>
       <div className="main">
+        <MyDrawer />
         {view ? (
           <Container maxWidth="sm">
             <form className="task-form" onSubmit={handleSubmit}>
@@ -176,4 +177,3 @@ export const UserProfile = ({ history }) => {
     </div>
   );
 };
-//  onChange={(e) => setImg(e.target.files[0])}

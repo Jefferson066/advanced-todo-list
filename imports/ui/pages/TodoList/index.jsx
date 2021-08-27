@@ -9,6 +9,7 @@ import { Btn } from '../../components/Btn';
 import { TaskList } from '../../components/TaskList';
 
 import { Container } from '@material-ui/core';
+import { MyDrawer } from '../../components/Drawer';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
@@ -51,17 +52,20 @@ export const TodoList = ({ history }) => {
 
   return (
     <div>
-      <div className="logout">
-        <BtnLogout />
-      </div>
-      <div className="main">
-        <Container maxWidth="sm">
-          <MyTypography variant={'h4'} textValue={'Todo List'} />
-          <div className="btn">
-            <Btn textValue={'Adicionar Tarefa'} event={handleAddTaskClick} />
-          </div>
-          <TaskList tasks={tasks} onDeleteClick={deleteTask} onEditClick={editTaskClick} />
-        </Container>
+      <div className="app">
+        <div className="logout">
+          <BtnLogout />
+        </div>
+        <div className="main">
+          <MyDrawer />
+          <Container maxWidth="sm">
+            <MyTypography variant={'h4'} textValue={'Todo List'} />
+            <div className="btn">
+              <Btn textValue={'Adicionar Tarefa'} event={handleAddTaskClick} />
+            </div>
+            <TaskList tasks={tasks} onDeleteClick={deleteTask} onEditClick={editTaskClick} />
+          </Container>
+        </div>
       </div>
     </div>
   );
