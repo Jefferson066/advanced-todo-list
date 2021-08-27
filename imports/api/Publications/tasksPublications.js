@@ -15,9 +15,6 @@ Meteor.publish('tasks.private', function publishTasks() {
   return TasksCollection.find({ userId: this.userId, private: 'pessoal' });
 });
 
-/*
-Andamento
-Concluídas
-Total de Tarefas Cadastradas
-
-*/
+Meteor.publish('tasks', function publishTasks() {
+  return TasksCollection.find({ userId: this.userId }); //todas tasks do usuario
+});

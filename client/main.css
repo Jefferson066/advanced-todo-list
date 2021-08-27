@@ -18,7 +18,6 @@ body {
 
   padding: 0;
   margin: 0;
-
   font-size: 14px;
 }
 
@@ -83,9 +82,6 @@ body {
   margin: 8px;
 }
 
-.login-form > div > label {
-  font-weight: bold;
-}
 
 .login-form > div  > input {
   flex-grow: 1;
@@ -116,12 +112,4 @@ body {
 
 .msg-success{
   color: green;
-}
-
-.logout{
-  display: flex;
-  align-self: flex-end;
-  margin: 8px 16px 0;
-  font-weight: bold;
-  cursor: pointer;
 }
