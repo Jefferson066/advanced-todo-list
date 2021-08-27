@@ -14,3 +14,10 @@ Meteor.publish('tasks.private', function publishTasks() {
   }
   return TasksCollection.find({ userId: this.userId, private: 'pessoal' });
 });
+
+/*
+Andamento
+Concluídas
+Total de Tarefas Cadastradas
+
+*/

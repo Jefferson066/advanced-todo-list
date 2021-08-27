@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useTracker } from 'meteor/react-meteor-data';
 
-import { BtnLogout } from '../../components/BtnLogout';
 import { MyTypography } from '../../components/MyTypography';
 import { Btn } from '../../components/Btn';
 import { TaskList } from '../../components/TaskList';
@@ -53,9 +52,6 @@ export const TodoList = ({ history }) => {
   return (
     <div>
       <div className="app">
-        <div className="logout">
-          <BtnLogout />
-        </div>
         <div className="main">
           <MyDrawer />
           <Container maxWidth="sm">

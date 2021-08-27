@@ -9,7 +9,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Fab from '@material-ui/core/Fab';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
-import { BtnLogout } from '../../components/BtnLogout';
 import { MyTypography } from '../../components/MyTypography';
 import { InputName } from '../../components/InputName';
 import { InputViewName } from '../../components/InputViewName';
@@ -67,9 +66,6 @@ export const UserProfile = ({ history }) => {
 
   return (
     <div className="app">
-      <div className="logout">
-        <BtnLogout />
-      </div>
       <div className="main">
         <MyDrawer />
         {view ? (

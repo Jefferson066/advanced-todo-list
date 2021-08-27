@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Meteor } from 'meteor/meteor';
 
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
@@ -16,6 +17,7 @@ import {
 
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: { width: 'inherit' },
@@ -27,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 export function MyDrawer() {
   const classes = useStyles();
+  const logout = () => Meteor.logout();
   return (
     <div style={{ display: 'flex' }}>
       <Container>
@@ -57,9 +60,19 @@ export function MyDrawer() {
               </ListItem>
             </Link>
             <Divider />
+            <Link className={classes.link}>
+              <ListItem button onClick={logout}>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary={'Sair'} />
+              </ListItem>
+            </Link>
+            <Divider />
           </List>
         </Drawer>
       </Container>
     </div>
   );
 }
+//<BtnLogout />

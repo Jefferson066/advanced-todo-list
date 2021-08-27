@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useState } from 'react';
 
-import { BtnLogout } from '../../components/BtnLogout';
 import { ViewTaskForm } from '../../components/ViewTaskForm';
 import { MyDrawer } from '../../components/Drawer';
 import { EditTaskForm } from '../../components/EditTaskForm';
@@ -70,9 +69,6 @@ export const EditTask = ({ history }) => {
   };
   return (
     <div className="app">
-      <div className="logout">
-        <BtnLogout />
-      </div>
       <div className="main">
         <MyDrawer />
         {view ? (

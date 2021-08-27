@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { BtnLogout } from '../../components/BtnLogout';
 import { Btn } from '../../components/Btn';
 import { MyTypography } from '../../components/MyTypography';
 import { MyDrawer } from '../../components/Drawer';
@@ -20,9 +19,6 @@ export const Welcome = ({ history }) => {
 
   return (
     <div className="app">
-      <div className="logout">
-        <BtnLogout />
-      </div>
       <div className="main">
         <MyDrawer />
         <MyTypography variant={'h4'} textValue={` Bem vindo ${user.username}!`} />

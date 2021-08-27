@@ -3,7 +3,6 @@ import { TaskForm } from '../../components/TaskForm/index';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
-import { BtnLogout } from '../../components/BtnLogout';
 import { MyDrawer } from '../../components/Drawer';
 
 const URL_PATHS = {
@@ -45,9 +44,6 @@ export const NewTask = ({ history }) => {
 
   return (
     <div className="app">
-      <div className="logout">
-        <BtnLogout />
-      </div>
       <div className="main">
         <MyDrawer />
         <TaskForm
