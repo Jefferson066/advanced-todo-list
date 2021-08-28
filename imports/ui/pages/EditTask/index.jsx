@@ -42,17 +42,21 @@ export const EditTask = ({ history }) => {
     if (!viewName || !viewText || !viewData) {
       return;
     }
-    Meteor.call(
-      'tasks.update',
-      _id,
-      viewName,
-      viewText,
-      viewData,
-      viewStatus,
-      user.username,
-      isPrivate,
-    );
-    setMsg('Tarefa Editada!');
+    try {
+      Meteor.call(
+        'tasks.update',
+        _id,
+        viewName,
+        viewText,
+        viewData,
+        viewStatus,
+        user.username,
+        isPrivate,
+      );
+      setMsg('Tarefa Editada');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleStatusChange = (e) => {

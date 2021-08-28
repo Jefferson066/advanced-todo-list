@@ -33,13 +33,16 @@ export const NewTask = ({ history }) => {
       setMsg('');
       return;
     }
-
-    Meteor.call('tasks.insert', name, text, data, user.username, isPrivate);
-    setMsg('Tarefa adicionada!');
-    setText('');
-    setName('');
-    setData('');
-    setIsPrivate('');
+    try {
+      Meteor.call('tasks.insert', name, text, data, user.username, isPrivate);
+      setMsg('Tarefa adicionada!');
+      setText('');
+      setName('');
+      setData('');
+      setIsPrivate('');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

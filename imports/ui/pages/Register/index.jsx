@@ -11,20 +11,18 @@ export const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // eslint-disable-next-line no-unused-vars
-    setSuccess((success) => '');
+    setSuccess('');
     const validate = validatePassword(password, repassword);
-
     if (!validate) {
       return;
     }
-
     try {
       Meteor.call('user.create', username, password);
-      // eslint-disable-next-line no-unused-vars
-      setError((error) => '');
-      // eslint-disable-next-line no-unused-vars
-      setSuccess((success) => 'Cadastro realizado!');
+      setError('');
+      setSuccess('Cadastro realizado!');
+      setUsername('');
+      setPassword('');
+      setRepassword('');
     } catch (error) {
       console.log(error);
     }

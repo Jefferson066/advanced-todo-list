@@ -7,7 +7,6 @@
 body {
   font-family: sans-serif;
   background-color: #F5F5DC;
-  background-image: linear-gradient(to bottom, #778899, #918e82 100%);
   background-attachment: fixed;
 
   position: absolute;

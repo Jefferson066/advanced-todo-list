@@ -41,7 +41,11 @@ export const TodoList = ({ history }) => {
     if (task) {
       let msg = confirm('Deseja excluir o item ?');
       if (msg == true) {
-        Meteor.call('tasks.remove', _id);
+        try {
+          Meteor.call('tasks.remove', _id);
+        } catch (error) {
+          console.log(error);
+        }
       }
       //remocao
     } else {

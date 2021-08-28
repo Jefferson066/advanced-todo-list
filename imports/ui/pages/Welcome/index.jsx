@@ -31,11 +31,11 @@ export const Welcome = ({ history }) => {
   });
 
   const allTasks = [...allTasksUser, ...allTaskPublic]; // remover objetos duplicados
-  const allTasksFillter = _.uniqBy(allTasks, '_id'); // sem objetos duplicados
+  const allTasksFilter = _.uniqBy(allTasks, '_id'); // sem objetos duplicados
 
-  const registeredTasks = allTasksFillter.filter((obj) => obj.status === 'cadastrada');
-  const tasksProgress = allTasksFillter.filter((obj) => obj.status === 'andamento');
-  const completedTasks = allTasksFillter.filter((obj) => obj.status === 'concluida');
+  const registeredTasks = allTasksFilter.filter((obj) => obj.status === 'cadastrada');
+  const tasksProgress = allTasksFilter.filter((obj) => obj.status === 'andamento');
+  const completedTasks = allTasksFilter.filter((obj) => obj.status === 'concluida');
 
   const handleClick = (e) => {
     e.preventDefault();

@@ -3,20 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useState } from 'react';
 
-import { Container } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import Fab from '@material-ui/core/Fab';
-import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
-
-import { MyTypography } from '../../components/MyTypography';
-import { InputName } from '../../components/InputName';
-import { InputViewName } from '../../components/InputViewName';
-import { Btn } from '../../components/Btn';
-import { BtnSubmit } from '../../components/BtnSubmit';
-import { InputViewData } from '../../components/InputViewData';
 import { MyDrawer } from '../../components/Drawer';
-import { InputData } from '../../components/InputData';
+import { FormProfileView } from '../../components/FormProfileView';
+import { FormProfileEdit } from '../../components/FormProfileEdit';
 
 const URL_PATHS = {
   HOME: '/authenticated',
@@ -42,8 +31,12 @@ export const UserProfile = ({ history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Meteor.call('user.update', name, email, birthDate, sex, company, imgBase64);
-    setMsg('Dados Editados!');
+    try {
+      Meteor.call('user.update', name, email, birthDate, sex, company, imgBase64);
+      setMsg('Dados Editados!');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleEditClick = (e) => {
@@ -69,105 +62,33 @@ export const UserProfile = ({ history }) => {
       <div className="main">
         <MyDrawer />
         {view ? (
-          <Container maxWidth="sm">
-            <form className="task-form" onSubmit={handleSubmit}>
-              <MyTypography variant={'h4'} textValue={'Dados do usuario'} />
-              <div className="input"></div>
-              <div className="input">
-                <InputViewName name={'name'} value={name} label={'Nome'} />
-              </div>
-              <div className="input">
-                <TextField disabled variant="outlined" name={'email'} value={email} label="Email" />
-              </div>
-              <div className="input">
-                <InputViewData value={birthDate} />
-              </div>
-              <div className="input">
-                <TextField disabled variant="outlined" name={'sex'} value={sex} label="Sexo" />
-              </div>
-              <div className="input">
-                <TextField
-                  disabled
-                  variant="outlined"
-                  name={'company'}
-                  value={company}
-                  label="Empresa"
-                />
-              </div>
-              <div className="center btn">
-                <Btn textValue={'Voltar'} event={handleBackClick} />
-                <Btn textValue={'Editar'} event={handleEditClick} />
-              </div>
-            </form>
-          </Container>
+          <FormProfileView
+            handleSubmit={handleSubmit}
+            handleBackClick={handleBackClick}
+            handleEditClick={handleEditClick}
+            email={email}
+            name={name}
+            birthDate={birthDate}
+            sex={sex}
+            company={company}
+          />
         ) : (
-          <Container maxWidth="sm">
-            <form className="task-form" onSubmit={handleSubmit}>
-              <MyTypography variant={'h4'} textValue={'Editar Usuário'} />
-              {msg && (
-                <div className="msg-success">
-                  <MyTypography variant={'h5'} textValue={msg} />
-                </div>
-              )}
-              <div>
-                <input
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  id="contained-button-file"
-                  multiple
-                  type="file"
-                  onChange={handleUploadClick}
-                />
-                <label htmlFor="contained-button-file">
-                  <Fab component="span" style={{ margin: 10 }}>
-                    <AddPhotoAlternateIcon />
-                  </Fab>
-                </label>
-              </div>
-              <div className="input">
-                <InputName name={'Nome'} value={name} label="Nome" setName={setName} />
-              </div>
-              <div className="input">
-                <TextField
-                  variant="outlined"
-                  name={'email'}
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  label="Email"
-                />
-              </div>
-              <div className="input">
-                <InputData setData={setBirthDate} value={birthDate} />
-              </div>
-              <div className="input">
-                <TextField
-                  select
-                  label="Selecione"
-                  onChange={(e) => setSex(e.target.value)}
-                  value={sex}
-                  helperText="Selecione seu sexo"
-                  variant="outlined"
-                >
-                  <MenuItem value={'masculino'}>Masculino</MenuItem>
-                  <MenuItem value={'feminino'}>Feminino</MenuItem>
-                </TextField>
-              </div>
-              <div className="input">
-                <TextField
-                  variant="outlined"
-                  name={'company'}
-                  onChange={(e) => setCompany(e.target.value)}
-                  value={company}
-                  label="Empresa"
-                />
-              </div>
-              <div className="center btn">
-                <Btn textValue={'Voltar'} event={handleBackClick} />
-                <BtnSubmit textValue={'Salvar'} />
-              </div>
-            </form>
-          </Container>
+          <FormProfileEdit
+            handleSubmit={handleSubmit}
+            handleUploadClick={handleUploadClick}
+            handleBackClick={handleBackClick}
+            msg={msg}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            setBirthDate={setBirthDate}
+            birthDate={birthDate}
+            setSex={setSex}
+            sex={sex}
+            setCompany={setCompany}
+            company={company}
+          />
         )}
       </div>
     </div>
