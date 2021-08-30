@@ -9,13 +9,7 @@ import { Container } from '@material-ui/core';
 import { SimpleCard } from '../../components/Card';
 import { CardButton } from '../../components/CardButton';
 
-/*
-const URL_PATHS = {
-  TODOLIST: '/authenticated/todolist',
-};*/
-
-// eslint-disable-next-line no-unused-vars
-export const Welcome = ({ history }) => {
+export const Welcome = () => {
   const user = useTracker(() => Meteor.user());
 
   const { allTasksUser, allTaskPublic } = useTracker(() => {
@@ -36,17 +30,10 @@ export const Welcome = ({ history }) => {
 
   const allTasks = [...allTasksUser, ...allTaskPublic]; // remover objetos duplicados
   const allTasksFilter = _.uniqBy(allTasks, '_id'); // sem objetos duplicados
+  console.log(allTasksFilter);
 
-  const registeredTasks = allTasksFilter.filter((obj) => obj.status === 'cadastrada');
   const tasksProgress = allTasksFilter.filter((obj) => obj.status === 'andamento');
   const completedTasks = allTasksFilter.filter((obj) => obj.status === 'concluida');
-
-  /*
-  const handleClick = (e) => {
-    e.preventDefault();
-    history.push(URL_PATHS.TODOLIST);
-  };
-  */
 
   return (
     <div className="app">
@@ -58,7 +45,7 @@ export const Welcome = ({ history }) => {
             textValue={`Olá ${user.username}, seja bem vindo ao Todo List!`}
           />
           <div className="card">
-            <SimpleCard title={'Cadastradas'} textValue={registeredTasks.length} />
+            <SimpleCard title={'Cadastradas'} textValue={allTasksFilter.length} />
             <SimpleCard title={'Andamento'} textValue={tasksProgress.length} />
           </div>
           <div className="card">
