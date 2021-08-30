@@ -24,6 +24,11 @@ export const UserProfile = ({ history }) => {
 
   const [msg, setMsg] = useState('');
 
+  const handleSetViewTrue = (e) => {
+    e.preventDefault();
+    setView(true);
+  };
+
   const handleBackClick = (e) => {
     e.preventDefault();
     history.push(URL_PATHS.HOME);
@@ -63,6 +68,7 @@ export const UserProfile = ({ history }) => {
         <MyDrawer />
         {view ? (
           <FormProfileView
+            img={user.profile.image}
             handleSubmit={handleSubmit}
             handleBackClick={handleBackClick}
             handleEditClick={handleEditClick}
@@ -76,7 +82,7 @@ export const UserProfile = ({ history }) => {
           <FormProfileEdit
             handleSubmit={handleSubmit}
             handleUploadClick={handleUploadClick}
-            handleBackClick={handleBackClick}
+            handleSetViewTrue={handleSetViewTrue}
             msg={msg}
             name={name}
             setName={setName}

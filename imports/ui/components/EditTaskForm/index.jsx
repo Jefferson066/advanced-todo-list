@@ -12,9 +12,9 @@ import { InputPublic } from '../InputPublic';
 export const EditTaskForm = ({
   handlePrivateChange,
   handleSubmit,
-  handleBackClick,
   handleStatusChange,
   isPrivate,
+  handleSetViewTrue,
   msg,
   viewName,
   viewText,
@@ -54,7 +54,7 @@ export const EditTaskForm = ({
           <InputPublic handlePrivateChange={handlePrivateChange} value={isPrivate} />
         </div>
         <div className="center btn">
-          <Btn textValue={'Voltar'} event={handleBackClick} />
+          <Btn textValue={'Voltar'} event={handleSetViewTrue} />
           <BtnSubmit textValue={'Salvar'} />
         </div>
       </form>

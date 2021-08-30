@@ -31,6 +31,11 @@ export const EditTask = ({ history }) => {
   const [isPrivate, setIsPrivate] = useState(publicTask.private);
   const [msg, setMsg] = useState('');
 
+  const handleSetViewTrue = (e) => {
+    e.preventDefault();
+    setView(true);
+  };
+
   const handleBackClick = (e) => {
     e.preventDefault();
     history.push(URL_PATHS.TODOLIST);
@@ -91,10 +96,10 @@ export const EditTask = ({ history }) => {
           />
         ) : (
           <EditTaskForm
-            handleBackClick={handleBackClick}
             handleSubmit={handleSubmit}
             handleStatusChange={handleStatusChange}
             handlePrivateChange={handlePrivateChange}
+            handleSetViewTrue={handleSetViewTrue}
             msg={msg}
             viewName={viewName}
             isPrivate={isPrivate}

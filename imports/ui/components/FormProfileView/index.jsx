@@ -6,6 +6,7 @@ import { InputViewEmail } from '../InputViewEmail';
 import { InputViewName } from '../InputViewName';
 import { MyTypography } from '../MyTypography';
 import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,16 +22,25 @@ export const FormProfileView = ({
   email,
   birthDate,
   sex,
+  // eslint-disable-next-line no-unused-vars
+  img,
   company,
   name,
   handleBackClick,
   handleEditClick,
 }) => {
   const classes = useStyles();
+  const preview = 'data:image/png;base64,' + img;
+
   return (
     <Container maxWidth="sm">
       <form className="task-form" onSubmit={handleSubmit}>
-        <MyTypography variant={'h4'} textValue={'Dados do usuario'} />
+        <MyTypography variant={'h4'} textValue={'Dados do usuário'} />
+        <div className="btn">
+          <Avatar alt={name}>
+            <img src={preview}></img>
+          </Avatar>
+        </div>
         <div className="input">
           <InputViewName name={'name'} value={name} label={'Nome'} />
         </div>

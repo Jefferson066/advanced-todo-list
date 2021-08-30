@@ -20,12 +20,12 @@ const useStyles = makeStyles((theme) => ({
 export const FormProfileEdit = ({
   handleSubmit,
   handleUploadClick,
-  handleBackClick,
   msg,
   name,
   setName,
   email,
   setEmail,
+  handleSetViewTrue,
   setBirthDate,
   birthDate,
   setSex,
@@ -99,7 +99,7 @@ export const FormProfileEdit = ({
           />
         </div>
         <div className="center btn">
-          <Btn textValue={'Voltar'} event={handleBackClick} />
+          <Btn textValue={'Voltar'} event={handleSetViewTrue} />
           <BtnSubmit textValue={'Salvar'} />
         </div>
       </form>

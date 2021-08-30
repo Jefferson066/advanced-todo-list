@@ -51,7 +51,7 @@ export function MyDrawer() {
               </ListItem>
             </Link>
             <Divider />
-            <Link component={RouterLink} to="/authenticated/todolist" className={classes.link}>
+            <Link component={RouterLink} to="/authenticated" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <HomeIcon />
