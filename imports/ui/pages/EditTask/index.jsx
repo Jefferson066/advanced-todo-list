@@ -18,8 +18,8 @@ export const EditTask = ({ history }) => {
   const { privateTask, publicTask } = useTracker(() => {
     Meteor.subscribe('tasks.private');
     Meteor.subscribe('tasks.public');
-    const privateTask = TasksCollection.findOne({ _id: _id, userId: user._id }); //bugado
-    const publicTask = TasksCollection.findOne({ _id: _id });
+    const privateTask = TasksCollection.findOne({ _id: _id, userId: user._id }); // so o dono pode editar
+    const publicTask = TasksCollection.findOne({ _id: _id }); // todos podem visualizar
     return { privateTask, publicTask };
   });
 
@@ -29,7 +29,6 @@ export const EditTask = ({ history }) => {
   const [viewData, setViewData] = useState(publicTask.data);
   const [viewStatus, setViewStatus] = useState(publicTask.status);
   const [isPrivate, setIsPrivate] = useState(publicTask.private);
-  // eslint-disable-next-line no-unused-vars
   const [msg, setMsg] = useState('');
 
   const handleBackClick = (e) => {

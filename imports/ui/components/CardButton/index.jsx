@@ -27,7 +27,7 @@ export function CardButton({ title }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">
+        <Button size="small" variant="outlined">
           <Link component={RouterLink} to="/authenticated/todolist">
             {'Visualizar'}
           </Link>

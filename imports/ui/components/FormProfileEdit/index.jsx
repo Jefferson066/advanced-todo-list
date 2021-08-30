@@ -6,6 +6,16 @@ import { InputName } from '../InputName';
 import { InputData } from '../InputData';
 import { Btn } from '../Btn';
 import { BtnSubmit } from '../BtnSubmit';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '35ch',
+    },
+  },
+}));
 
 export const FormProfileEdit = ({
   handleSubmit,
@@ -23,6 +33,7 @@ export const FormProfileEdit = ({
   setCompany,
   company,
 }) => {
+  const classes = useStyles();
   return (
     <Container maxWidth="sm">
       <form className="task-form" onSubmit={handleSubmit}>
@@ -50,9 +61,10 @@ export const FormProfileEdit = ({
         <div className="input">
           <InputName name={'Nome'} value={name} label="Nome" setName={setName} />
         </div>
-        <div className="input">
+        <div>
           <TextField
             variant="outlined"
+            className={classes.root}
             name={'email'}
             type="email"
             value={email}
@@ -60,24 +72,25 @@ export const FormProfileEdit = ({
             label="Email"
           />
         </div>
-        <div className="input">
-          <InputData setData={setBirthDate} value={birthDate} />
+        <div>
+          <InputData className={classes.root} setData={setBirthDate} value={birthDate} />
         </div>
-        <div className="input">
+        <div>
           <TextField
             select
-            label="Selecione"
+            className={classes.root}
+            label="Selecione seu sexo"
             onChange={(e) => setSex(e.target.value)}
             value={sex}
-            helperText="Selecione seu sexo"
             variant="outlined"
           >
             <MenuItem value={'masculino'}>Masculino</MenuItem>
             <MenuItem value={'feminino'}>Feminino</MenuItem>
           </TextField>
         </div>
-        <div className="input">
+        <div>
           <TextField
+            className={classes.root}
             variant="outlined"
             name={'company'}
             onChange={(e) => setCompany(e.target.value)}

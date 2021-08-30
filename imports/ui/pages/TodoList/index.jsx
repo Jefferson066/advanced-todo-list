@@ -4,11 +4,11 @@ import { TasksCollection } from '../../../api/database/TasksCollection';
 import { useTracker } from 'meteor/react-meteor-data';
 
 import { MyTypography } from '../../components/MyTypography';
-import { Btn } from '../../components/Btn';
 import { TaskList } from '../../components/TaskList';
 
 import { Container } from '@material-ui/core';
 import { MyDrawer } from '../../components/Drawer';
+import { BtnAddTask } from '../../components/BtnAddTask';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
@@ -59,9 +59,11 @@ export const TodoList = ({ history }) => {
         <div className="main">
           <MyDrawer />
           <Container maxWidth="sm">
-            <MyTypography variant={'h4'} textValue={'Todo List'} />
-            <div className="btn">
-              <Btn textValue={'Adicionar Tarefa'} event={handleAddTaskClick} />
+            <div style={{ marginRight: '20px' }}>
+              <MyTypography variant={'h4'} textValue={'Todo List'} />
+            </div>
+            <div className="btn center">
+              <BtnAddTask handleAddTaskClick={handleAddTaskClick} />
             </div>
             <TaskList tasks={tasks} onDeleteClick={deleteTask} onEditClick={editTaskClick} />
           </Container>

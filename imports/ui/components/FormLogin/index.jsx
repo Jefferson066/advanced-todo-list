@@ -18,7 +18,7 @@ export const FormLogin = ({ submit, error, username, password, setUsername, setP
       <div className="input">
         <InputName name={'username'} value={username} label={'Username'} setName={setUsername} />
       </div>
-      <div className="input">
+      <div>
         <InputPassword
           label={'Password'}
           value={password}
@@ -29,7 +29,7 @@ export const FormLogin = ({ submit, error, username, password, setUsername, setP
       <div className="btn">
         <BtnSubmit textValue={'Log In'} />
       </div>
-      <div className="link">
+      <div className="link btn">
         <LinkComponent textValue={'Cadastrar'} to={'/register'} />
       </div>
     </form>

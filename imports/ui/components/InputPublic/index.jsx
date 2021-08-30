@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import { MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,18 +12,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const InputName = ({ name, setName, label, value }) => {
+export const InputPublic = ({ handlePrivateChange, value }) => {
   const classes = useStyles();
   return (
     <TextField
-      required
+      id="outlined-select-currency"
+      select
       className={classes.root}
-      type="text"
-      name={name}
+      onChange={handlePrivateChange}
       value={value}
-      onChange={(e) => setName(e.target.value)}
-      label={label}
+      label="Selecione Pública/Pessoal"
       variant="outlined"
-    />
+    >
+      <MenuItem value={'publica'}>Pública</MenuItem>
+      <MenuItem value={'pessoal'}>Pessoal</MenuItem>
+    </TextField>
   );
 };

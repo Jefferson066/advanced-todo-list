@@ -4,17 +4,21 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
-    width: 130,
+    width: 230,
     marginRight: 20,
-    marginLeft: 10,
   },
 });
 
-export const Btn = ({ textValue, event = null, color = 'primary', variant = 'contained' }) => {
+export const BtnAddTask = ({ handleAddTaskClick }) => {
   const classes = useStyles();
   return (
-    <Button variant={variant} color={color} onClick={event} className={classes.root}>
-      {textValue}
+    <Button
+      variant={'contained'}
+      color={'primary'}
+      onClick={handleAddTaskClick}
+      className={classes.root}
+    >
+      Adicionar Tarefa
     </Button>
   );
 };

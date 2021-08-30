@@ -11,18 +11,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const InputName = ({ name, setName, label, value }) => {
+export const InputViewEmail = ({ email }) => {
   const classes = useStyles();
   return (
     <TextField
-      required
-      className={classes.root}
-      type="text"
-      name={name}
-      value={value}
-      onChange={(e) => setName(e.target.value)}
-      label={label}
+      disabled
       variant="outlined"
+      name={'email'}
+      value={email}
+      label="Email"
+      className={classes.root}
     />
   );
 };

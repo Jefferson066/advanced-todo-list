@@ -83,24 +83,6 @@ body {
 
 }
 
-.login-form > div {
-  margin: 8px;
-}
-
-
-.login-form > div  > input {
-  flex-grow: 1;
-  box-sizing: border-box;
-  display: block;
-  padding: 10px 6px;
-  background: transparent;
-  border: 1px solid #aaa;
-  width: 300px;
-  font-size: 1em;
-  margin-right: 16px;
-  margin-top: 4px;
-}
-
 .login-form > div > input:focus {
   outline: 0;
 }

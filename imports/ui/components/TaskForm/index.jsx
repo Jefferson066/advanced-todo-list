@@ -1,13 +1,12 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import { InputName } from '../InputName';
 import { InputText } from '../InputText';
 import { InputData } from '../InputData';
 import { BtnSubmit } from '../BtnSubmit';
 import { MyTypography } from '../MyTypography';
 import { Btn } from '../Btn';
+import { InputPublic } from '../InputPublic';
 
 export const TaskForm = ({
   handleSubmit,
@@ -34,31 +33,18 @@ export const TaskForm = ({
         <div className="input">
           <InputName name={'name'} value={name} label={'Nome'} setName={setName} />
         </div>
-        <div className="input">
+        <div>
           <InputText name={'description'} value={text} label="Descrição" setText={setText} />
         </div>
-        <div className="input">
+        <div>
           <InputData value={data} setData={setData} />
         </div>
-        <div className="input">
-          <TextField
-            id="outlined-select-currency"
-            select
-            onChange={handlePrivateChange}
-            value={isPrivate}
-            label="Selecione"
-            helperText="Selecione se a tarefa é Pública/Pessoal"
-            variant="outlined"
-          >
-            <MenuItem value={'publica'}>Pública</MenuItem>
-            <MenuItem value={'pessoal'}>Pessoal</MenuItem>
-          </TextField>
-        </div>
-        <div className="btn">
-          <BtnSubmit textValue={'Adicionar'} />
+        <div>
+          <InputPublic handlePrivateChange={handlePrivateChange} value={isPrivate} />
         </div>
         <div className="btn">
           <Btn textValue={'Voltar'} event={handleBackClick} />
+          <BtnSubmit textValue={'Adicionar'} />
         </div>
       </form>
     </Container>

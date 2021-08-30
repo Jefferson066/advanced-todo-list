@@ -31,10 +31,10 @@ export const FormRegister = ({
       <div className="input">
         <InputName name={'username'} label={'Username'} setName={setUsername} />
       </div>
-      <div className="input">
+      <div>
         <InputPassword label={'Password'} name={'password'} setPassword={setPassword} />
       </div>
-      <div className="input">
+      <div>
         <InputPassword
           label={'Confirm Password'}
           name={'re-password'}
@@ -44,7 +44,7 @@ export const FormRegister = ({
       <div className="btn">
         <BtnSubmit textValue={' Cadastrar'} />
       </div>
-      <div className="link">
+      <div className="link btn">
         <LinkComponent textValue={'Início'} to={'/'} />
       </div>
     </form>

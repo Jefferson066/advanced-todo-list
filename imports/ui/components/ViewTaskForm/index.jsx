@@ -25,16 +25,16 @@ export const ViewTaskForm = ({
         <div className="input">
           <InputViewName value={viewName} />
         </div>
-        <div className="input">
+        <div>
           <InputViewText value={viewText} />
         </div>
-        <div className="input">
+        <div>
           <InputViewData value={viewData} />
         </div>
-        <div className="input">
+        <div>
           <InputViewStatus value={viewStatus} />
         </div>
-        <div className="input">
+        <div>
           <InputViewStatus value={isPrivate} />
         </div>
         <div className="center btn">
