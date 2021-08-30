@@ -46,6 +46,12 @@ body {
   align-items: center;
   height: 100%;
 }
+.card{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 .main::-webkit-scrollbar {
   width: 0;
