@@ -36,10 +36,8 @@ export const FormProfileView = ({
     <Container maxWidth="sm">
       <form className="task-form" onSubmit={handleSubmit}>
         <MyTypography variant={'h4'} textValue={'Dados do usuário'} />
-        <div className="btn">
-          <Avatar alt={name}>
-            <img src={preview}></img>
-          </Avatar>
+        <div className={'btn'}>
+          <Avatar alt={name} src={preview} style={{ height: 90, width: 90 }}></Avatar>
         </div>
         <div className="input">
           <InputViewName name={'name'} value={name} label={'Nome'} />
