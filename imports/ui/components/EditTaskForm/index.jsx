@@ -6,20 +6,17 @@ import { InputData } from '../InputData';
 import { BtnSubmit } from '../BtnSubmit';
 import { MyTypography } from '../MyTypography';
 import { Btn } from '../Btn';
-import { InputStatus } from '../InputStatus';
 import { InputPublic } from '../InputPublic';
 
 export const EditTaskForm = ({
   handlePrivateChange,
   handleSubmit,
-  handleStatusChange,
   isPrivate,
   handleSetViewTrue,
   msg,
   viewName,
   viewText,
   viewData,
-  viewStatus,
   setViewName,
   setViewText,
   setViewData,
@@ -46,9 +43,6 @@ export const EditTaskForm = ({
         </div>
         <div>
           <InputData value={viewData} setData={setViewData} />
-        </div>
-        <div>
-          <InputStatus viewStatus={viewStatus} handleStatusChange={handleStatusChange} />
         </div>
         <div>
           <InputPublic handlePrivateChange={handlePrivateChange} value={isPrivate} />

@@ -26,6 +26,13 @@ body {
   cursor: pointer;
 }
 
+.alterar-situacao{
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+
 .input {
   margin-top: 10px;
 }

@@ -32,6 +32,7 @@ export const Welcome = () => {
   const allTasksFilter = _.uniqBy(allTasks, '_id'); // sem objetos duplicados
   console.log(allTasksFilter);
 
+  const registeredTasks = allTasksFilter.filter((obj) => obj.status === 'cadastrada');
   const tasksProgress = allTasksFilter.filter((obj) => obj.status === 'andamento');
   const completedTasks = allTasksFilter.filter((obj) => obj.status === 'concluida');
 
@@ -45,7 +46,7 @@ export const Welcome = () => {
             textValue={`Olá ${user.username}, seja bem vindo ao Todo List!`}
           />
           <div className="card">
-            <SimpleCard title={'Cadastradas'} textValue={allTasksFilter.length} />
+            <SimpleCard title={'Cadastradas'} textValue={registeredTasks.length} />
             <SimpleCard title={'Andamento'} textValue={tasksProgress.length} />
           </div>
           <div className="card">

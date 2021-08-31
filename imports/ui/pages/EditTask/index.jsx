@@ -26,6 +26,7 @@ export const EditTask = ({ history }) => {
   const [viewName, setViewName] = useState(publicTask.name);
   const [viewText, setViewText] = useState(publicTask.text);
   const [viewData, setViewData] = useState(publicTask.data);
+  // eslint-disable-next-line no-unused-vars
   const [viewStatus, setViewStatus] = useState(publicTask.status);
   const [isPrivate, setIsPrivate] = useState(publicTask.private);
   const [msg, setMsg] = useState('');
@@ -46,24 +47,17 @@ export const EditTask = ({ history }) => {
       return;
     }
     try {
-      Meteor.call(
-        'tasks.update',
-        _id,
-        viewName,
-        viewText,
-        viewData,
-        viewStatus,
-        user.username,
-        isPrivate,
-      );
+      Meteor.call('tasks.update', _id, viewName, viewText, viewData, user.username, isPrivate);
       setMsg('Tarefa Editada');
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleStatusChange = (e) => {
-    setViewStatus(e.target.value);
+  const handleStatusChange = (e, status) => {
+    e.preventDefault();
+    Meteor.call('situacao.update', _id, status);
+    history.push(URL_PATHS.TODOLIST);
   };
 
   const handleEditClick = (e) => {
@@ -96,7 +90,6 @@ export const EditTask = ({ history }) => {
         ) : (
           <EditTaskForm
             handleSubmit={handleSubmit}
-            handleStatusChange={handleStatusChange}
             handlePrivateChange={handlePrivateChange}
             handleSetViewTrue={handleSetViewTrue}
             msg={msg}

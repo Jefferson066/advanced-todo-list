@@ -82,12 +82,11 @@ Meteor.methods({
 
     TasksCollection.remove(taskId);
   },
-  'tasks.update'(_id, viewName, viewText, viewData, viewStatus, username, isPrivate) {
+  'tasks.update'(_id, viewName, viewText, viewData, username, isPrivate) {
     check(_id, String);
     check(viewName, String);
     check(viewText, String);
     check(viewData, String);
-    check(viewStatus, String);
     check(username, String);
     check(isPrivate, String);
 
@@ -96,14 +95,29 @@ Meteor.methods({
     }
 
     TasksCollection.update(_id, {
-      name: viewName,
-      text: viewText,
-      data: viewData,
-      createdAt: new Date(),
-      userId: this.userId,
-      username: username,
-      status: viewStatus,
-      private: isPrivate,
+      $set: {
+        name: viewName,
+        text: viewText,
+        data: viewData,
+        createdAt: new Date(),
+        userId: this.userId,
+        username: username,
+        private: isPrivate,
+      },
+    });
+  },
+  'situacao.update'(_id, status) {
+    check(_id, String);
+    check(status, String);
+
+    if (!this.userId) {
+      throw new Meteor.Error('Not authorized!');
+    }
+
+    TasksCollection.update(_id, {
+      $set: {
+        status: status,
+      },
     });
   },
 });
