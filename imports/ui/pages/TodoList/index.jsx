@@ -6,7 +6,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { MyTypography } from '../../components/MyTypography';
 import { TaskList } from '../../components/TaskList';
 
-import { Container } from '@material-ui/core';
+import { Container, TextField } from '@material-ui/core';
 import { MyDrawer } from '../../components/Drawer';
 import { BtnAddTask } from '../../components/BtnAddTask';
 import { MyCheckbox } from '../../components/CheckBox';
@@ -21,12 +21,13 @@ export const TodoList = ({ history }) => {
   const user = useTracker(() => Meteor.user());
 
   const [state, setState] = useState(false); // estado do checkbox
+  const [inputSearch, setInputSearch] = useState('');
   const { tasks } = useTracker(() => {
     Meteor.subscribe('tasks.public-private', state);
     const tasks = TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch();
     return { tasks };
   });
-
+  console.log(inputSearch);
   // eslint-disable-next-line no-unused-vars
   const handleChangecompleted = (e) => {
     setState(!state);
@@ -68,6 +69,15 @@ export const TodoList = ({ history }) => {
           <Container maxWidth="sm">
             <div style={{ marginRight: '20px' }}>
               <MyTypography variant={'h4'} textValue={'Todo List'} />
+            </div>
+            <div className={'center'}>
+              <TextField
+                variant="outlined"
+                value={inputSearch}
+                onChange={(e) => setInputSearch(e.target.value)}
+                type="search"
+                label={'Search'}
+              />
             </div>
             <div className="btn center">
               <BtnAddTask handleAddTaskClick={handleAddTaskClick} />
