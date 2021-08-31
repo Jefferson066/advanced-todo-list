@@ -21,9 +21,9 @@ export const TodoList = ({ history }) => {
   const user = useTracker(() => Meteor.user());
 
   const [state, setState] = useState(false); // estado do checkbox
-  const [inputSearch, setInputSearch] = useState('');
+  const [inputSearch, setInputSearch] = useState(''); // valor do input search
   const { tasks } = useTracker(() => {
-    Meteor.subscribe('tasks.public-private', state);
+    Meteor.subscribe('tasks.public-private-list', state, inputSearch);
     const tasks = TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch();
     return { tasks };
   });
