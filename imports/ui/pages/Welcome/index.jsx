@@ -14,7 +14,7 @@ export const Welcome = () => {
 
   const { allTasksUser, allTaskPublic } = useTracker(() => {
     Meteor.subscribe('tasks'); // todas tasks do usuario logado
-    Meteor.subscribe('tasks.public'); // todas tasks publicas do banco
+    Meteor.subscribe('tasks.public-private'); // todas tasks publicas do banco
     const allTasksUser = TasksCollection.find(
       // todas tasks do usuario logado
       { userId: user._id },

@@ -16,8 +16,7 @@ export const EditTask = ({ history }) => {
   const { _id } = useParams(); // _id da task selecionada na list
   const user = useTracker(() => Meteor.user());
   const { privateTask, publicTask } = useTracker(() => {
-    Meteor.subscribe('tasks.private');
-    Meteor.subscribe('tasks.public');
+    Meteor.subscribe('tasks.public-private');
     const privateTask = TasksCollection.findOne({ _id: _id, userId: user._id }); // so o dono pode editar
     const publicTask = TasksCollection.findOne({ _id: _id }); // todos podem visualizar
     return { privateTask, publicTask };

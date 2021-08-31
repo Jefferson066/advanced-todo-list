@@ -19,8 +19,7 @@ export const TodoList = ({ history }) => {
   const user = useTracker(() => Meteor.user());
 
   const { tasks } = useTracker(() => {
-    Meteor.subscribe('tasks.private');
-    Meteor.subscribe('tasks.public');
+    Meteor.subscribe('tasks.public-private');
     const tasks = TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch();
     return { tasks };
   });
