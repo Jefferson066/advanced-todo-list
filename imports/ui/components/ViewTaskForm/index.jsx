@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 import { MyTypography } from '../MyTypography';
 import { Btn } from '../Btn';
@@ -7,6 +7,7 @@ import { InputViewName } from '../InputViewName';
 import { InputViewText } from '../InputViewText';
 import { InputViewData } from '../InputViewData';
 import { InputViewStatus } from '../InputViewStatus';
+import { ChangetStatus } from '../ChangeStatus';
 
 export const ViewTaskForm = ({
   privateTask,
@@ -36,36 +37,7 @@ export const ViewTaskForm = ({
           <InputViewStatus value={viewStatus} />
         </div>
         {privateTask && (
-          <div className={'alterar-situacao'}>
-            <MyTypography variant={'h6'} textValue={'Alterar para:'} />
-            {viewStatus == 'cadastrada' && (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={(e) => handleStatusChange(e, 'andamento')}
-              >
-                Andamento
-              </Button>
-            )}
-            {viewStatus == 'andamento' && (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={(e) => handleStatusChange(e, 'concluida')}
-              >
-                Concluída
-              </Button>
-            )}
-            {viewStatus == 'concluida' && (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={(e) => handleStatusChange(e, 'cadastrada')}
-              >
-                Cadastrada
-              </Button>
-            )}
-          </div>
+          <ChangetStatus handleStatusChange={handleStatusChange} viewStatus={viewStatus} />
         )}
         <div>
           <InputViewStatus value={isPrivate} />
