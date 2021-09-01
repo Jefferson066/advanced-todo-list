@@ -20,14 +20,14 @@ const URL_PATHS = {
 export const TodoList = ({ history }) => {
   const user = useTracker(() => Meteor.user());
 
-  const [state, setState] = useState(false); // estado do checkbox
-  const [inputSearch, setInputSearch] = useState(''); // valor do input search
+  const [state, setState] = useState(false); // estado do CHECKBOX
+  const [inputSearch, setInputSearch] = useState(''); // estado do input search
   const { tasks } = useTracker(() => {
     Meteor.subscribe('tasks.public-private-list', state, inputSearch);
     const tasks = TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch();
     return { tasks };
   });
-  console.log(inputSearch);
+
   // eslint-disable-next-line no-unused-vars
   const handleChangecompleted = (e) => {
     setState(!state);
@@ -81,7 +81,9 @@ export const TodoList = ({ history }) => {
             </div>
             <div className="btn center">
               <BtnAddTask handleAddTaskClick={handleAddTaskClick} />
-              <MyCheckbox state={state} handleChangecompleted={handleChangecompleted} />
+              {inputSearch <= 0 && (
+                <MyCheckbox state={state} handleChangecompleted={handleChangecompleted} />
+              )}
             </div>
             <TaskList tasks={tasks} onDeleteClick={deleteTask} onEditClick={editTaskClick} />
           </Container>

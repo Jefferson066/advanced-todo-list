@@ -12,24 +12,36 @@ Meteor.publish('tasks.public-private', function publishTasks() {
 });
 
 // usada no todolist apenas /////
-Meteor.publish('tasks.public-private-list', function publishTasks(state = false) {
-  if (!this.userId) {
-    return this.ready();
-  }
-  check(state, Boolean);
-  if (!state) {
-    return TasksCollection.find({
-      $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
-    });
-  }
+Meteor.publish(
+  'tasks.public-private-list',
+  function publishTasks(state = false, inputSearch = null) {
+    if (!this.userId) {
+      return this.ready();
+    }
+    check(state, Boolean);
+    check(inputSearch, String);
 
-  if (state) {
-    return TasksCollection.find({
-      $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
-      $and: [{ status: 'concluida' }], // query para so concluidas
-    });
-  }
-});
+    if (inputSearch) {
+      return TasksCollection.find({
+        $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
+        $and: [{ name: inputSearch }], // buscar pelo name digitado no search input
+      });
+    }
+
+    if (!state) {
+      return TasksCollection.find({
+        $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
+      });
+    }
+
+    if (state) {
+      return TasksCollection.find({
+        $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
+        $and: [{ status: 'concluida' }], // busca para so concluidas
+      });
+    }
+  },
+);
 
 Meteor.publish('tasks', function publishTasks() {
   return TasksCollection.find({ userId: this.userId }); //todas tasks do usuario
