@@ -11,6 +11,7 @@ import { MyDrawer } from '../../components/Drawer';
 import { BtnAddTask } from '../../components/BtnAddTask';
 import { MyCheckbox } from '../../components/CheckBox';
 import { useState } from 'react';
+import { BtnPagination } from '../../components/BtnPagination';
 
 const URL_PATHS = {
   NEWTASK: '/authenticated/todolist/new',
@@ -20,18 +21,36 @@ const URL_PATHS = {
 export const TodoList = ({ history }) => {
   const user = useTracker(() => Meteor.user());
 
+  ///////////////////////////////// paginacao//////////////////////
+  // eslint-disable-next-line no-unused-vars
+  const [btnSkip, setBtnSkip] = useState(0);
+  //const [count, setCount] = useState(0);
+  /////////////////////////////////////////////////////////////////////////
+
   const [state, setState] = useState(false); // estado do CHECKBOX
   const [inputSearch, setInputSearch] = useState(''); // estado do input search
   const { tasks } = useTracker(() => {
-    Meteor.subscribe('tasks.public-private-list', state, inputSearch);
-    const tasks = TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch();
+    Meteor.subscribe('tasks.public-private-list', state, inputSearch, btnSkip);
+    const tasks = TasksCollection.find({}).fetch();
     return { tasks };
   });
-
   // eslint-disable-next-line no-unused-vars
   const handleChangecompleted = (e) => {
     setState(!state);
   };
+
+  /////////////////////paginacao//////
+  // eslint-disable-next-line no-unused-vars
+  const handleSkipPage = (e) => {
+    if (btnSkip > tasks.length) return;
+    setBtnSkip(btnSkip + 4);
+  };
+  // eslint-disable-next-line no-unused-vars
+  const handleBackPage = (e) => {
+    if (btnSkip == 0) return;
+    setBtnSkip(btnSkip - 4);
+  };
+  ///////////////////////////////////
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
@@ -86,9 +105,13 @@ export const TodoList = ({ history }) => {
               )}
             </div>
             <TaskList tasks={tasks} onDeleteClick={deleteTask} onEditClick={editTaskClick} />
+            {!btnSkip == 0 && <BtnPagination text={'voltar'} event={handleBackPage} />}
+            {btnSkip <= tasks.length && <BtnPagination text={'proxima'} event={handleSkipPage} />}
           </Container>
         </div>
       </div>
     </div>
   );
 };
+/*
+ */
