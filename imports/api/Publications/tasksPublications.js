@@ -24,10 +24,13 @@ Meteor.publish(
     console.log(skip);
 
     if (inputSearch) {
-      return TasksCollection.find({
-        $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
-        $and: [{ name: inputSearch }], // buscar pelo name digitado no search input
-      });
+      return TasksCollection.find(
+        {
+          $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
+          $and: [{ name: inputSearch }], // buscar pelo name digitado no search input
+        },
+        { skip: skip, limit: 4 },
+      );
     }
 
     if (!state) {
@@ -40,10 +43,13 @@ Meteor.publish(
 
     if (state) {
       // checkbox on
-      return TasksCollection.find({
-        $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
-        $and: [{ status: 'concluida' }], // busca para so concluidas
-      });
+      return TasksCollection.find(
+        {
+          $or: [{ private: 'publica' }, { userId: this.userId, private: 'pessoal' }],
+          $and: [{ status: 'concluida' }], // busca para so concluidas
+        },
+        { skip: skip, limit: 4 },
+      );
     }
   },
 );

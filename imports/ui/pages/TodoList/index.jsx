@@ -42,7 +42,7 @@ export const TodoList = ({ history }) => {
   /////////////////////paginacao//////
   // eslint-disable-next-line no-unused-vars
   const handleSkipPage = (e) => {
-    if (btnSkip > tasks.length) return;
+    if (tasks.length < 4) return;
     setBtnSkip(btnSkip + 4);
   };
   // eslint-disable-next-line no-unused-vars
@@ -79,7 +79,7 @@ export const TodoList = ({ history }) => {
       alert('Você não tem permissão para apagar esse item!');
     }
   };
-
+  console.log(tasks.length);
   return (
     <div>
       <div className="app">
@@ -106,7 +106,7 @@ export const TodoList = ({ history }) => {
             </div>
             <TaskList tasks={tasks} onDeleteClick={deleteTask} onEditClick={editTaskClick} />
             {!btnSkip == 0 && <BtnPagination text={'voltar'} event={handleBackPage} />}
-            {btnSkip <= tasks.length && <BtnPagination text={'proxima'} event={handleSkipPage} />}
+            {tasks.length < 4 ? null : <BtnPagination text={'proxima'} event={handleSkipPage} />}
           </Container>
         </div>
       </div>
